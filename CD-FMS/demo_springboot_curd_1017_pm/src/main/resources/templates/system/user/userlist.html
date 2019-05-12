@@ -1,0 +1,100 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+        <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../../css/list.css" />
+	</head>
+	<body>
+		<div id="header">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#">用户管理</a></li>
+			</ul>
+		</div>
+		<!-- <h2 th:text="${session.userInfo}"></h2> -->
+		<div id="content">
+			<!-- <form id="form1" method="post" action="deptlist" class="form-inline">
+				<input type="text" name="sdeptName" placeholder="按部门名称搜索!" 
+				    autofocus class="form-control input-sm" th:value="${param.sdeptName}" />
+				<input type="submit" value="搜 索" class="btn btn-warning btn-sm" />
+			</form> -->
+			<form id="form2" method="post" action="#">
+				<table class="table table-bordered table-hover">
+					<tr>
+						<th><input type="checkbox" onclick="checkAll(this);" /></th>
+						<th>序号</th>
+						<th>用户名</th>
+						<th>性别</th>
+						<th>部门</th>
+						<th>入职时间</th>
+						<th>操作时间</th>
+					</tr>
+					<tr th:each="user,status:${list}">
+						<td><input type="checkbox" name="id" th:value="${user.userId}" /></td>
+						<td th:text="${status.count}"></td>
+						<td th:text="${user.userName}"></td>
+						<td th:text="${user.userGender}"></td>
+						<td th:text="${user.TDemoDept.deptName}"></td>
+						<td th:text="${#dates.format(user.userInTime, 'yyyy年MM月dd日')}"></td>
+						<td th:text="${#dates.format(user.operTime, 'yyyy年MM月dd日 HH:mm:ss')}"></td>
+					</tr>
+					<tr th:if="${list.size()==0}">
+					    <td colspan="5" style="color:#FF0000;">未查找到数据!</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</body>
+=======
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+        <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../../css/list.css" />
+	</head>
+	<body>
+		<div id="header">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#">用户管理</a></li>
+			</ul>
+		</div>
+		<!-- <h2 th:text="${session.userInfo}"></h2> -->
+		<div id="content">
+			<!-- <form id="form1" method="post" action="deptlist" class="form-inline">
+				<input type="text" name="sdeptName" placeholder="按部门名称搜索!" 
+				    autofocus class="form-control input-sm" th:value="${param.sdeptName}" />
+				<input type="submit" value="搜 索" class="btn btn-warning btn-sm" />
+			</form> -->
+			<form id="form2" method="post" action="#">
+				<table class="table table-bordered table-hover">
+					<tr>
+						<th><input type="checkbox" onclick="checkAll(this);" /></th>
+						<th>序号</th>
+						<th>用户名</th>
+						<th>性别</th>
+						<th>部门</th>
+						<th>入职时间</th>
+						<th>操作时间</th>
+					</tr>
+					<tr th:each="user,status:${list}">
+						<td><input type="checkbox" name="id" th:value="${user.userId}" /></td>
+						<td th:text="${status.count}"></td>
+						<td th:text="${user.userName}"></td>
+						<td th:text="${user.userGender}"></td>
+						<td th:text="${user.TDemoDept.deptName}"></td>
+						<td th:text="${#dates.format(user.userInTime, 'yyyy年MM月dd日')}"></td>
+						<td th:text="${#dates.format(user.operTime, 'yyyy年MM月dd日 HH:mm:ss')}"></td>
+					</tr>
+					<tr th:if="${list.size()==0}">
+					    <td colspan="5" style="color:#FF0000;">未查找到数据!</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</body>
+>>>>>>> second commit
+</html>

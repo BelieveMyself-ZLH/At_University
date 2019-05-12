@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+                            "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+                            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.attendance.javabean">
+	<class name="OvertimeRecord" table="overtime_record_tab">
+		<id name="e_id" column="e_id"></id>
+		<property name="overtime_num" type="string" column="overtime_num" />
+		<property name="overtime_time_begin" type="string" column="overtime_time_begin"></property>
+		<property name="overtime_time_end" type="string" column="overtime_time_end"></property>
+		<property name="overtime_days" type="string" column="overtime_days"></property>
+	</class>
+</hibernate-mapping>  

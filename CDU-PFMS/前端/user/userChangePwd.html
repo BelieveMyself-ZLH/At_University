@@ -1,0 +1,207 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="../css/hui.css" />
+		<script type="text/javascript" src="../js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="../js/H-ui.js" ></script>
+		<style>
+			.change-pwd{
+				width: 600px;
+				height: 500px;
+				background: #F9F9F9;
+				margin: 0 auto;
+				border: 1px solid #ADADAD;
+				border-radius: 10px;
+			}
+			.input-group:first-child{
+				margin-top: 20%;
+			}
+			.input-group{
+				margin-left: 25%;
+				margin-top: 25px;
+				width: 50%;
+			}
+			.input-group span{
+				width: 80px;
+			}
+			.btn-sub{
+				width: 50%;
+				text-align: center;
+				margin: 30px auto;
+			}
+			.btn-sub button{
+				margin: 0px 15px;
+			}
+		</style>
+		<script>
+			function sub(ev){
+				ev = event || window.event;
+				var oldPwd = $('#prePwd').val();
+				var newPwd = $('#newPwd').val();
+				var surePwd = $('#surePwd').val();
+//				alert($newPwd.val()+"  "+$surePwd.val());
+				if(newPwd != surePwd){
+					parent.showModal('提示', '确认密码与新密码不同！');
+					ev.preventDefault();
+				}else{
+					$.ajax({
+						contentType:'application/json',
+						xhrFields:{
+							withCredentials: true
+						},
+						type:"post",
+						url:"http://192.168.1.168:8080/account/updatepwd",
+						data: JSON.stringify({"oldPassword": oldPwd,"newPassword": newPwd}),
+						dataType: 'text',
+						success:function(data){
+							if(data!=null&&data=='success'){
+								$.Huimodalalert('信息修改成功',2000);
+								$("input").val('');
+							}
+						},
+						error:function(){
+							alert('出错啦！');
+						}
+					});
+				}
+					
+			}
+		</script>
+	</head>
+	<body>
+		<div class="path">
+			<ol class="breadcrumb">
+				<li><span>当前页面：</span><a href="">用户操作</a></li>
+				<li><a href="">修改个人信息</a></li>
+			</ol>
+		</div>
+		<div class="change-pwd">
+			<form id="form1" action="#" method="post">
+				<div class="input-group">
+				    <span class="input-group-addon" id="basic-addon1">原密码</span>
+				    <input type="password" id="prePwd" name="prePwd" autofocus="autofocus" class="form-control" value="" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group">
+				    <span class="input-group-addon" id="basic-addon1">新密码</span>
+				    <input type="password" id="newPwd" name="newPwd" class="form-control" value="" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group">
+				    <span class="input-group-addon" id="basic-addon1">确认密码</span>
+				    <input type="password" id="surePwd" name="surePwd" class="form-control" value="" aria-describedby="basic-addon1">
+				</div>
+				<div class="btn-sub">
+					<button type="reset" class="btn btn-primary">重置</button>
+					<button type="button" onclick="sub()" class="btn btn-info">提交</button>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
+=======
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="../css/hui.css" />
+		<script type="text/javascript" src="../js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="../js/H-ui.js" ></script>
+		<style>
+			.change-pwd{
+				width: 600px;
+				height: 500px;
+				background: #F9F9F9;
+				margin: 0 auto;
+				border: 1px solid #ADADAD;
+				border-radius: 10px;
+			}
+			.input-group:first-child{
+				margin-top: 20%;
+			}
+			.input-group{
+				margin-left: 25%;
+				margin-top: 25px;
+				width: 50%;
+			}
+			.input-group span{
+				width: 80px;
+			}
+			.btn-sub{
+				width: 50%;
+				text-align: center;
+				margin: 30px auto;
+			}
+			.btn-sub button{
+				margin: 0px 15px;
+			}
+		</style>
+		<script>
+			function sub(ev){
+				ev = event || window.event;
+				var oldPwd = $('#prePwd').val();
+				var newPwd = $('#newPwd').val();
+				var surePwd = $('#surePwd').val();
+//				alert($newPwd.val()+"  "+$surePwd.val());
+				if(newPwd != surePwd){
+					parent.showModal('提示', '确认密码与新密码不同！');
+					ev.preventDefault();
+				}else{
+					$.ajax({
+						contentType:'application/json',
+						xhrFields:{
+							withCredentials: true
+						},
+						type:"post",
+						url:"http://192.168.1.168:8080/account/updatepwd",
+						data: JSON.stringify({"oldPassword": oldPwd,"newPassword": newPwd}),
+						dataType: 'text',
+						success:function(data){
+							if(data!=null&&data=='success'){
+								$.Huimodalalert('信息修改成功',2000);
+								$("input").val('');
+							}
+						},
+						error:function(){
+							alert('出错啦！');
+						}
+					});
+				}
+					
+			}
+		</script>
+	</head>
+	<body>
+		<div class="path">
+			<ol class="breadcrumb">
+				<li><span>当前页面：</span><a href="">用户操作</a></li>
+				<li><a href="">修改个人信息</a></li>
+			</ol>
+		</div>
+		<div class="change-pwd">
+			<form id="form1" action="#" method="post">
+				<div class="input-group">
+				    <span class="input-group-addon" id="basic-addon1">原密码</span>
+				    <input type="password" id="prePwd" name="prePwd" autofocus="autofocus" class="form-control" value="" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group">
+				    <span class="input-group-addon" id="basic-addon1">新密码</span>
+				    <input type="password" id="newPwd" name="newPwd" class="form-control" value="" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group">
+				    <span class="input-group-addon" id="basic-addon1">确认密码</span>
+				    <input type="password" id="surePwd" name="surePwd" class="form-control" value="" aria-describedby="basic-addon1">
+				</div>
+				<div class="btn-sub">
+					<button type="reset" class="btn btn-primary">重置</button>
+					<button type="button" onclick="sub()" class="btn btn-info">提交</button>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
+>>>>>>> second commit

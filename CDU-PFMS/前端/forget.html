@@ -1,0 +1,128 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>找回密码</title>
+		<link href="css/forget.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<script>
+			function Find() {
+				var accountId = $("[name=accountId]").val();
+				var userName = $("[name=userName]").val();
+				var userMailbox = $("[name=userMailbox]").val();
+				if (accountId==''||userName == '' || userMailbox == '') {
+					alert("错误：账号,姓名或邮箱为空");
+					return;
+				}
+				$.ajax({
+					type: "post",
+					url: "http://192.168.1.168:8080/forget",
+					data: {
+						"account": accountId,
+						"username": userName,
+						"mail": userMailbox
+					},
+					dataType: 'text',
+					success : function(data) {
+						if(data!=null&&data=='success'){
+							window.location.href="login.html";
+						}else{
+							alert(data);
+						}
+					},
+					async: true
+				});
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="forget-wrap">
+			<br />
+			<a id="title">找回密码</a>
+			<!--<p>说明:用户在忘记密码后，通过输入账号,姓名,邮箱来进行找回</p>-->
+			<div class="forget-input">
+				<p>
+					账号:<input type="text" name="accountId" placeholder="请输入账号" />
+				</p>
+				<p>
+					姓名:<input type="text" name="userName" placeholder="请输入姓名" />
+				</p>
+				<p>
+					邮箱:<input type="text" name="userMailbox" placeholder="请输入您信息中填入的邮箱" />
+				</p>
+				<div class="down">	
+					<input id="logo" type="button" value="找 回 密 码" class="forget-button" onclick="Find()" />
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+=======
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>找回密码</title>
+		<link href="css/forget.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<script>
+			function Find() {
+				var accountId = $("[name=accountId]").val();
+				var userName = $("[name=userName]").val();
+				var userMailbox = $("[name=userMailbox]").val();
+				if (accountId==''||userName == '' || userMailbox == '') {
+					alert("错误：账号,姓名或邮箱为空");
+					return;
+				}
+				$.ajax({
+					type: "post",
+					url: "http://192.168.1.168:8080/forget",
+					data: {
+						"account": accountId,
+						"username": userName,
+						"mail": userMailbox
+					},
+					dataType: 'text',
+					success : function(data) {
+						if(data!=null&&data=='success'){
+							window.location.href="login.html";
+						}else{
+							alert(data);
+						}
+					},
+					async: true
+				});
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="forget-wrap">
+			<br />
+			<a id="title">找回密码</a>
+			<!--<p>说明:用户在忘记密码后，通过输入账号,姓名,邮箱来进行找回</p>-->
+			<div class="forget-input">
+				<p>
+					账号:<input type="text" name="accountId" placeholder="请输入账号" />
+				</p>
+				<p>
+					姓名:<input type="text" name="userName" placeholder="请输入姓名" />
+				</p>
+				<p>
+					邮箱:<input type="text" name="userMailbox" placeholder="请输入您信息中填入的邮箱" />
+				</p>
+				<div class="down">	
+					<input id="logo" type="button" value="找 回 密 码" class="forget-button" onclick="Find()" />
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+>>>>>>> second commit
+</html>

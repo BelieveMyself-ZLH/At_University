@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+                            "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+                            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.attendance.javabean">
+	<class name="MonthRecord" table="month_record_tab">
+		<id name="e_id" column="e_id"></id>
+		<property name="work_note_month" type="int" column="work_note_month" />
+		<property name="out_note_month" type="int" column="out_note_month"></property>
+		<property name="over_note_month" type="int" column="over_note_month"></property>
+		<property name="off_note_month" type="int" column="off_note_month"></property>
+	</class>
+</hibernate-mapping>  

@@ -1,0 +1,9 @@
+<<<<<<< HEAD
+Manifest-Version: 1.0
+Class-Path: .
+Main-Class: com/zlh/Clock
+=======
+Manifest-Version: 1.0
+Class-Path: .
+Main-Class: com/zlh/Clock
+>>>>>>> second commit

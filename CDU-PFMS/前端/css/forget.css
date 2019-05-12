@@ -1,0 +1,130 @@
+<<<<<<< HEAD
+body{
+	margin:0;
+	padding: 0;
+}
+body,html{
+	width: 100%;
+	height: 100%;
+}
+body{
+	background: url(../img/money.jpg) no-repeat;
+	background-size:100% 100%;
+}
+.forget-wrap{
+	width:520px;
+    height:320px;
+    opacity:0.8;              /* 登录框部分样式*/
+    position: absolute;
+    margin-left: 55%;
+	margin-top: 12%;
+	border-width:1px;
+	border-style: solid;
+	border-color: #fff;
+	border-radius: 8px;
+	background: #fff;
+}
+#title{
+	font-family: "微软雅黑";
+	font-size: 20px;
+	color: red;
+	margin-left: 185px;
+}
+.forget-wrap p{
+	padding-left: 25px;
+}
+.forget-input p{
+	font-family: "微软雅黑";
+	font-size: 20px;
+	margin-left: 100px;
+	margin-top: 30px;
+}
+.forget-input #name{
+	background: lightblue;
+	width:180px;
+	height: 20px;
+}
+.forget-input #pwd{
+	background: lightblue;
+	width:180px;
+	height: 20px;
+}
+.down{
+font-family: "微软雅黑";
+	font-size: 18px;
+	margin-left: 150px;
+}
+.down .forget-button{
+	margin-top: 10px;
+	width: 150px;
+	height: 40px;
+	background: #28A4C9;
+	font-family: "微软雅黑";
+	font-size: 20px;
+	border-radius: 5px;
+=======
+body{
+	margin:0;
+	padding: 0;
+}
+body,html{
+	width: 100%;
+	height: 100%;
+}
+body{
+	background: url(../img/money.jpg) no-repeat;
+	background-size:100% 100%;
+}
+.forget-wrap{
+	width:520px;
+    height:320px;
+    opacity:0.8;              /* 登录框部分样式*/
+    position: absolute;
+    margin-left: 55%;
+	margin-top: 12%;
+	border-width:1px;
+	border-style: solid;
+	border-color: #fff;
+	border-radius: 8px;
+	background: #fff;
+}
+#title{
+	font-family: "微软雅黑";
+	font-size: 20px;
+	color: red;
+	margin-left: 185px;
+}
+.forget-wrap p{
+	padding-left: 25px;
+}
+.forget-input p{
+	font-family: "微软雅黑";
+	font-size: 20px;
+	margin-left: 100px;
+	margin-top: 30px;
+}
+.forget-input #name{
+	background: lightblue;
+	width:180px;
+	height: 20px;
+}
+.forget-input #pwd{
+	background: lightblue;
+	width:180px;
+	height: 20px;
+}
+.down{
+font-family: "微软雅黑";
+	font-size: 18px;
+	margin-left: 150px;
+}
+.down .forget-button{
+	margin-top: 10px;
+	width: 150px;
+	height: 40px;
+	background: #28A4C9;
+	font-family: "微软雅黑";
+	font-size: 20px;
+	border-radius: 5px;
+>>>>>>> second commit
+}

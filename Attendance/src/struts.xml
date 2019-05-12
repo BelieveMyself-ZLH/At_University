@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"  
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<include file="struts-default.xml" />
+	<package extends="struts-default" name="default" namespace="/">
+		<action name="employee" class="com.attendance.action.EmployeeAction">
+			<result name="success">/employeeinftab.jsp</result>
+		</action>
+		<action name="daka" class="com.attendance.action.DakaAction" method="addRecord">
+			<result name="success">/Clockin.html</result>
+		</action>
+		<action name="attendance" class="com.attendance.action.AttendanceAction" method="getAllRecord">
+			<result name="success">/attendancerecordtab.jsp</result>
+		</action>
+		<action name="out" class="com.attendance.action.OutAction">
+			<result name="success">/outrecordtab.jsp</result>
+		</action>
+		<action name="overtime" class="com.attendance.action.OvertimeAction">
+			<result name="success">/overtimerecordtab.jsp</result>
+		</action>
+		<action name="off" class="com.attendance.action.OffAction">
+			<result name="success">/offrecordtab.jsp</result>		
+		</action>
+		<action name="month" class="com.attendance.action.MonthAction">
+			<result name="success">/monthrecordtab.jsp</result>
+		</action>
+	</package>
+</struts>  

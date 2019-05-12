@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="../css/list.css" />
+		<script type="text/javascript" src="../js/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="../js/pageCounter.js"></script>
+		<script>
+			function load(pageNumber) {
+				var count = 0;
+				$.ajax({
+					contentType: 'application/json',
+					xhrFields: {
+						withCredentials: true
+					},
+					type: "post",
+					url: "http://192.168.1.168:8080/account/queryOperInfo",
+					data: JSON.stringify({
+						"balance": pageNumber
+					}),
+					dataType: 'json',
+					success: function(data) {
+						//						console.log(data);
+						console.log(data[data.length - 1])
+						if (data.length > 0) {
+							for (var i in data) {
+								if (i == data.length - 1) {
+									break;
+								}
+								count++;
+								var str = '';
+								if (data[i].userOperType == 0) {
+									str = '存钱';
+								} else if (data[i].userOperType == 1) {
+									str = '取钱';
+								} else if (data[i].userOperType == 2) {
+									str = '转账';
+								} else if (data[i].userOperType == 3) {
+									str = '收帐';
+								} else {
+									str = '操作信息有误';
+								}
+								var tr = "<tr>" +
+									"	<td>" + count + "</td>" +
+									"	<td>" + str + "</td>" +
+									"	<td>" + data[i].userOperAmount + "</td>" +
+									"	<td>" + data[i].user_OperAccount + "</td>" +
+									"	<td>" + data[i].userOperTime + "</td>" +
+									"</tr>"
+								$("#tableList").append(tr);
+							}
+						} else {
+							var tr = "<tr>" +
+								"<td colspan=\"4\" style=\"color:#ff0000;\">未查找到数据！</td>" +
+								"</tr>"
+							$("#tableList").append(tr);
+						}
+					}
+				})
+			}
+
+			function tile(page,maxRowCount, pageNumber, startIndex, totalPageCount, totalRowCount) {
+				var s = "";
+				//上一页
+				s += "<li class='lastPage'><a><<</a></li>";
+				//分页列表
+				for (var i = 1; i <= totalPageCount; i++) {
+					if (i == pageNumber) {
+						s += "<li class=\"active list\"><a>" + i + "</a></li>";
+					} else {
+						s += "<li class='list'><a>" + i + "</a></li>";
+					}
+				}
+				//下一页
+				s += "<li class='nextPage'><a>>></a></li>";
+				$('.pager').html(s);
+				//点击页数
+				$('.list').click(function() {
+					//改变当前页数
+					page = $(this).text();
+					//重新加载
+					Page(page);
+				});
+				//上一页
+				$('.lastPage').click(function() {
+					if (page > 1) {
+						page = parseInt(page) - 1;
+					}else{
+						page=1;
+					}
+					Page(page);
+				});
+				//下一页
+				$('.nextPage').click(function() {
+					if (page < totalPageCount) {
+						page = parseInt(page) + 1;
+					}else{
+						page=totalPageCount;
+					}
+					Page(page);
+				});
+			}
+
+			function Page(page) {
+				$("#tableList tr:not(:first)").empty();
+				//返回的分页参数申明
+				var maxRowCount = 0;
+				var pageNumber = 0;
+				var startIndex = 0;
+				var totalPageCount = 0;
+				var totalRowCount = 0;
+				$.ajax({
+					contentType: 'application/json',
+					xhrFields: {
+						withCredentials: true
+					},
+					type: "post",
+					url: "http://192.168.1.168:8080/account/queryOperInfo",
+					data: JSON.stringify({
+						"balance": page
+					}),
+					dataType: 'json',
+					success: function(data) {
+						if (data.length > 0) {
+							maxRowCount = data[data.length - 1].maxRowCount;
+							pageNumber = data[data.length - 1].pageNumber;
+							startIndex = data[data.length - 1].startIndex;
+							totalPageCount = data[data.length - 1].totalPageCount;
+							totalRowCount = data[data.length - 1].totalRowCount;
+							for (var i in data) {
+								if (i == data.length - 1) {
+									break;
+								}
+								var str = '';
+								if (data[i].userOperType == 0) {
+									str = '存钱';
+								} else if (data[i].userOperType == 1) {
+									str = '取钱';
+								} else if (data[i].userOperType == 2) {
+									str = '转账';
+								} else if (data[i].userOperType == 3) {
+									str = '收帐';
+								} else {
+									str = '操作信息有误';
+								}
+								var tr = "<tr>" +
+									"	<td>" + (++startIndex) + "</td>" +
+									"	<td>" + str + "</td>" +
+									"	<td>" + data[i].userOperAmount + "</td>" +
+									"	<td>" + data[i].user_OperAccount + "</td>" +
+									"	<td>" + data[i].userOperTime + "</td>" +
+									"</tr>"
+								$("#tableList").append(tr);
+							}
+							tile(page,maxRowCount, pageNumber, startIndex, totalPageCount, totalRowCount);
+						} else {
+							var tr = "<tr>" +
+								"<td colspan=\"4\" style=\"color:#ff0000;\">未查找到数据！</td>" +
+								"</tr>"
+							$("#tableList").append(tr);
+						}
+					},
+					async: true
+				});
+			}
+			$(function() {
+				Page(1);
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="path">
+			<ol class="breadcrumb">
+				<li><span>当前页面：</span><a href="">用户查看信息</a></li>
+				<li><a href="">查看交易记录</a></li>
+			</ol>
+		</div>
+		<div id="content">
+			<table id="tableList" border="" cellspacing="" cellpadding="" class="table table-striped">
+				<tr>
+					<th>序号</th>
+					<th>交易类型</th>
+					<th>交易金额</th>
+					<th>交易对象</th>
+					<th>交易时间</th>
+				</tr>
+			</table>
+			<div id="pager">
+				<ul class="pager"></ul>
+			</div>
+		</div>
+	</body>
+
+</html>

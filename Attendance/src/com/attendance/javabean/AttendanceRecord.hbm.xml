@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+                            "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+                            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.attendance.javabean">
+	<class name="AttendanceRecord" table="attendance_record_tab">
+		<id name="e_id" column="e_id"></id>
+		<property name="e_num" type="string" column="e_num" />
+		<property name="work_time" type="string" column="work_time"></property>
+		<property name="end_time" type="string" column="end_time"></property>
+		<property name="work_note" type="string" column="work_note"></property>
+	</class>
+</hibernate-mapping>  

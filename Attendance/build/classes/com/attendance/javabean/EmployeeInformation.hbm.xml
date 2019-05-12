@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+                            "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+                            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.attendance.javabean">
+	<class name="EmployeeInformation" table="employee_inf_tab">
+		<id name="e_id" column="e_id"></id>
+		<property name="e_password" type="string" column="e_password"></property>
+		<property name="e_name" type="string" column="e_name"></property>
+		<property name="e_sex" type="string" column="e_sex"></property>
+		<property name="e_age" type="int" column="e_age"></property>
+		<property name="e_phone" type="string" column="e_phone"></property>
+		<property name="e_email" type="string" column="e_email"></property>
+		<property name="departmentId" type="string" column="departmentId"></property>
+	</class>
+</hibernate-mapping>  

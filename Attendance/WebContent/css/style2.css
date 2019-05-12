@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	height:100%;
+	width: 100%;
+	background: grey;
+}
+.employee_inf{
+	position: absolute;
+	width: 100%;
+	height: 10%;
+	color: white;
+	text-align: center;
+}
+.employee_inf_title{
+	background: black;
+}
+.employee_inf_result{
+	background: darkgray;
+}
+.attendance_record{
+	position: absolute;
+	width: 100%;
+	height: 10%;
+	color: white;
+	text-align: center;
+}
+.attendance_record_title{
+	background: red;
+}
+.attendance_record_result{
+	background: darkgray;
+}

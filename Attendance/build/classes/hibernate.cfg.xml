@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>  
+<!DOCTYPE hibernate-configuration PUBLIC  
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"  
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<!-- hbm配置 -->
+<hibernate-configuration>
+	<!-- 工厂 -->
+	<session-factory>
+		<!-- Database connection settings -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/attendance</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">123456</property>
+
+		<!-- 配置dialect方言，明确告诉hibernate连接的是哪种数据库 -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<!-- 显示出对应sql语句 -->
+		<property name="show_sql">true</property>
+		<!-- 格式化输出sql语句 -->
+		<property name="format_sql">true</property>
+		<!-- 配置 模型类 -->
+		<!-- 指定管理对象映射文件
+		-->
+		<mapping resource="com/attendance/javabean/EmployeeInformation.hbm.xml" />
+		<mapping resource="com/attendance/javabean/AttendanceRecord.hbm.xml"/>
+		<mapping resource="com/attendance/javabean/OutRecord.hbm.xml" />
+		<mapping resource="com/attendance/javabean/OffRecord.hbm.xml"/>
+		<mapping resource="com/attendance/javabean/MonthRecord.hbm.xml"/>
+		<mapping resource="com/attendance/javabean/OvertimeRecord.hbm.xml"/>
+		
+		
+	</session-factory>
+</hibernate-configuration>  

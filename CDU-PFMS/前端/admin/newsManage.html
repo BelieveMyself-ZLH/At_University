@@ -1,0 +1,343 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="../css/list.css" />
+		<script type="text/javascript" src="../js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="../js/pageCounter.js" ></script>
+		<style>
+			.search-inp{
+				text-align: right;
+				margin: 0 auto 30px;
+			}
+			#tableList tr td button{
+				padding-left: 5px;
+				width: 40px;
+				line-height: 8px;
+			}
+			#tableList tr td:nth-child(5){
+				width: 120px;
+			}
+			#tableList tr td:nth-child(4){
+				width: 100px;
+			}
+			#tableList tr td:nth-child(3){
+				font-size: 12px;
+			}
+			#tableList tr td:nth-child(2){
+				width: 200px;
+				font-size: 12px;
+			}
+		</style>
+		<script>
+			function addNews(){
+				window.location.href = "addNews.html";
+			}
+			//返回的分页参数申明
+			var maxRowCount = 0;
+			var pageNumber = 1;
+			var startIndex = 0;
+			var totalPageCount = 0;
+			var totalRowCount = 0;
+			//分页函数
+			function tile(maxRowCount, pageNumber, startIndex, totalPageCount, totalRowCount) {
+				var s = "";
+				//上一页
+				s += "<li class='lastPage'><a><<</a></li>";
+				//分页列表
+				for (var i = 1; i <= totalPageCount; i++) {
+					if (i == pageNumber) {
+						s += "<li class=\"active list\"><a>" + i + "</a></li>";
+					} else {
+						s += "<li class='list'><a>" + i + "</a></li>";
+					}
+				}
+				//下一页
+				s += "<li class='nextPage'><a>>></a></li>";
+				$('.pager').html(s);
+				//点击页数
+				$('.list').click(function() {
+					//改变当前页数
+					pageNumber = $(this).text();
+					//重新加载
+					load(pageNumber);
+				});
+				//上一页
+				$('.lastPage').click(function() {
+					load(pageNumber-1);
+				});
+				//下一页
+				$('.nextPage').click(function() {
+					load(pageNumber+1);
+				});
+			}
+			
+			function load(pageNumber){
+				$('#tableList tr').eq(0).siblings().remove();
+				var newsTitle = $('input[name=title]').val();
+								$.ajax({
+									type:"get",
+									url:"http://192.168.1.168:8080/queryNews",
+									async:true,
+									dataType: 'json',
+									data:{
+										newsTitle:newsTitle,
+										pageNumber:pageNumber
+									},
+									success:function(data){
+			//							var info = JSON.parse(this.data);
+										console.log(data);
+										for(var i in data){
+											if(i==data.length-1){
+												maxRowCount = data[i].maxRowCount;
+												pageNumber = data[i].pageNumber;
+												startIndex = data[i].startIndex;
+												totalPageCount = data[i].totalPageCount;
+												totalRowCount = data[i].totalRowCount;
+												break;
+											}
+											var tr = "<tr>"+
+														"<td>"+ data[i].newsId +"</td>"+
+														"<td>"+data[i].newsTitle+"</td>"+
+														"<td>"+data[i].newsSum+"</td>"+
+														"<td>"+data[i].newsTime+"</td>"+
+														"<td>"+
+															"<button type=\"button\" class=\"btn btn-link\">详细</button>"+
+															"<button type='button' class='btn btn-link del' newsid='"+data[i].newsId+"'>删除</button>"+
+														"</td>"+
+													  "</tr>"
+											$('#tableList').append(tr);
+										}
+										tile(maxRowCount, pageNumber, startIndex, totalPageCount, totalRowCount);
+									}
+								});
+							}
+			
+			$(function(){
+				//点击删除
+				$('#tableList').delegate('.del', 'click',function(){
+					var newsId = $(this).parent().siblings().eq(0).text();
+					$.ajax({
+						type:"post",
+						url:"http://192.168.1.168:8080/deleteNews",
+						data:{
+							newsId:newsId
+						},
+						async:true,
+						success:function(data){
+							load();
+						}
+					});
+				})
+				load();  //装载函数
+				
+			})
+		</script>
+	</head>
+	<body>
+		<div class="path">
+			<ol class="breadcrumb">
+				<li><span>当前页面：</span><a href=""><span>管理员操作</span></a></li>
+				<li><a href="">新闻管理</a></li>
+			</ol>
+		</div>
+		<div id="content">
+			<div class="search-inp">
+				<form id="form1" action="#" method="post" class="form-inline">
+					<input type="text" class="form-control input-sm" placeholder="请输入新闻标题" autofocus="autofocus" name="title" id="newsTitle"/>
+					<input type="button" onclick="load(1)"  value="搜索" class="btn btn-warning btn-sm"/>
+					<input type="button" onclick="addNews()" value="新增新闻" class="btn btn-warning btn-sm"/>
+				</form>
+			</div>
+			<table id="tableList" border="" cellspacing="" cellpadding="" class="table table-striped">
+				<tr>
+					<th width="150px">序号</th>
+					<th>标题</th>
+					<th>摘要</th>
+					<th>时间</th>
+					<th>操作</th>
+				</tr>
+			</table>
+			<div id="pager">
+				<div class="pager-wrapper">
+					<ul class="pager"></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+=======
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="../css/list.css" />
+		<script type="text/javascript" src="../js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="../js/pageCounter.js" ></script>
+		<style>
+			.search-inp{
+				text-align: right;
+				margin: 0 auto 30px;
+			}
+			#tableList tr td button{
+				padding-left: 5px;
+				width: 40px;
+				line-height: 8px;
+			}
+			#tableList tr td:nth-child(5){
+				width: 120px;
+			}
+			#tableList tr td:nth-child(4){
+				width: 100px;
+			}
+			#tableList tr td:nth-child(3){
+				font-size: 12px;
+			}
+			#tableList tr td:nth-child(2){
+				width: 200px;
+				font-size: 12px;
+			}
+		</style>
+		<script>
+			function addNews(){
+				window.location.href = "addNews.html";
+			}
+			//返回的分页参数申明
+			var maxRowCount = 0;
+			var pageNumber = 1;
+			var startIndex = 0;
+			var totalPageCount = 0;
+			var totalRowCount = 0;
+			//分页函数
+			function tile(maxRowCount, pageNumber, startIndex, totalPageCount, totalRowCount) {
+				var s = "";
+				//上一页
+				s += "<li class='lastPage'><a><<</a></li>";
+				//分页列表
+				for (var i = 1; i <= totalPageCount; i++) {
+					if (i == pageNumber) {
+						s += "<li class=\"active list\"><a>" + i + "</a></li>";
+					} else {
+						s += "<li class='list'><a>" + i + "</a></li>";
+					}
+				}
+				//下一页
+				s += "<li class='nextPage'><a>>></a></li>";
+				$('.pager').html(s);
+				//点击页数
+				$('.list').click(function() {
+					//改变当前页数
+					pageNumber = $(this).text();
+					//重新加载
+					load(pageNumber);
+				});
+				//上一页
+				$('.lastPage').click(function() {
+					load(pageNumber-1);
+				});
+				//下一页
+				$('.nextPage').click(function() {
+					load(pageNumber+1);
+				});
+			}
+			
+			function load(pageNumber){
+				$('#tableList tr').eq(0).siblings().remove();
+				var newsTitle = $('input[name=title]').val();
+								$.ajax({
+									type:"get",
+									url:"http://192.168.1.168:8080/queryNews",
+									async:true,
+									dataType: 'json',
+									data:{
+										newsTitle:newsTitle,
+										pageNumber:pageNumber
+									},
+									success:function(data){
+			//							var info = JSON.parse(this.data);
+										console.log(data);
+										for(var i in data){
+											if(i==data.length-1){
+												maxRowCount = data[i].maxRowCount;
+												pageNumber = data[i].pageNumber;
+												startIndex = data[i].startIndex;
+												totalPageCount = data[i].totalPageCount;
+												totalRowCount = data[i].totalRowCount;
+												break;
+											}
+											var tr = "<tr>"+
+														"<td>"+ data[i].newsId +"</td>"+
+														"<td>"+data[i].newsTitle+"</td>"+
+														"<td>"+data[i].newsSum+"</td>"+
+														"<td>"+data[i].newsTime+"</td>"+
+														"<td>"+
+															"<button type=\"button\" class=\"btn btn-link\">详细</button>"+
+															"<button type='button' class='btn btn-link del' newsid='"+data[i].newsId+"'>删除</button>"+
+														"</td>"+
+													  "</tr>"
+											$('#tableList').append(tr);
+										}
+										tile(maxRowCount, pageNumber, startIndex, totalPageCount, totalRowCount);
+									}
+								});
+							}
+			
+			$(function(){
+				//点击删除
+				$('#tableList').delegate('.del', 'click',function(){
+					var newsId = $(this).parent().siblings().eq(0).text();
+					$.ajax({
+						type:"post",
+						url:"http://192.168.1.168:8080/deleteNews",
+						data:{
+							newsId:newsId
+						},
+						async:true,
+						success:function(data){
+							load();
+						}
+					});
+				})
+				load();  //装载函数
+				
+			})
+		</script>
+	</head>
+	<body>
+		<div class="path">
+			<ol class="breadcrumb">
+				<li><span>当前页面：</span><a href=""><span>管理员操作</span></a></li>
+				<li><a href="">新闻管理</a></li>
+			</ol>
+		</div>
+		<div id="content">
+			<div class="search-inp">
+				<form id="form1" action="#" method="post" class="form-inline">
+					<input type="text" class="form-control input-sm" placeholder="请输入新闻标题" autofocus="autofocus" name="title" id="newsTitle"/>
+					<input type="button" onclick="load(1)"  value="搜索" class="btn btn-warning btn-sm"/>
+					<input type="button" onclick="addNews()" value="新增新闻" class="btn btn-warning btn-sm"/>
+				</form>
+			</div>
+			<table id="tableList" border="" cellspacing="" cellpadding="" class="table table-striped">
+				<tr>
+					<th width="150px">序号</th>
+					<th>标题</th>
+					<th>摘要</th>
+					<th>时间</th>
+					<th>操作</th>
+				</tr>
+			</table>
+			<div id="pager">
+				<div class="pager-wrapper">
+					<ul class="pager"></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+>>>>>>> second commit

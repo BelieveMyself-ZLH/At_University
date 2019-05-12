@@ -1,0 +1,1 @@
+This is Java program called CD-FMS(财务管理系统) based on the SSM framework.

@@ -1,0 +1,22 @@
+server:
+  port: 10004
+
+rocksdb:
+  data-dir: block-data/node1
+
+# tio 网络框架配置
+tio:
+  heart-timeout: 5000
+  client-group-name: ppblock-client
+  server-group-context-name: ppblock-server
+  # 服务端监听的端口
+  server-port: 1234
+  # 服务端绑定的 IP
+  server-ip: 127.0.0.1
+  # 配置初始的同步节点，类似比特币的中心节点
+  nodes:
+    -
+      ip: 127.0.0.1
+      port: 5678
+
+

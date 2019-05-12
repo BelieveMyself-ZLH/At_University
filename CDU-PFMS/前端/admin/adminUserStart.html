@@ -1,0 +1,317 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/list1.css" />
+		<script type="text/javascript" src="../js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="../js/pageCounter.js" ></script>
+		<script type="text/javascript" src="../js/H-ui.js"></script>
+		<link rel="stylesheet" href="../css/hui.css" />
+		<style>
+		</style>
+		<script>
+			//返回的分页参数申明
+			var maxRowCount = 0;
+			var pageNumber = 1;
+			var startIndex = 0;
+			var totalPageCount = 0;
+			var totalRowCount = 0;
+			//分页函数
+			function tile(maxRowCount, pageNumber, startIndex, totalPageCount, totalRowCount) {
+				var s = "";
+				//上一页
+				s += "<li class='lastPage'><a><<</a></li>";
+				//分页列表
+				for (var i = 1; i <= totalPageCount; i++) {
+					if (i == pageNumber) {
+						s += "<li class=\"active list\"><a>" + i + "</a></li>";
+					} else {
+						s += "<li class='list'><a>" + i + "</a></li>";
+					}
+				}
+				//下一页
+				s += "<li class='nextPage'><a>>></a></li>";
+				$('.pager').html(s);
+				//点击页数
+				$('.list').click(function() {
+					//改变当前页数
+					pageNumber = $(this).text();
+					//重新加载
+					load(pageNumber);
+				});
+				//上一页
+				$('.lastPage').click(function() {
+					load(pageNumber-1);
+				});
+				//下一页
+				$('.nextPage').click(function() {
+					load(pageNumber+1);
+				});
+			}
+			
+			//加载数据
+			function load(pageNumber){
+				var accountId = $('input[name=accountId]').val();
+				let count = 0;
+				$.ajax({
+					type:"get",
+					dataType: "json",
+					url:"http://192.168.1.168:8080/getOpenedAccounts",
+					async:true,
+					data:{
+						accountId:accountId,
+						pageNumber:pageNumber
+					},
+					success:function(data){
+						console.log(data);
+					$('#tableList tr').eq(0).siblings().remove();
+						//var info = JSON.parse(this.data);
+						for(var i in data){
+							count ++;
+							if(i==data.length-1){
+								console.log(data[data.length-1]);
+								maxRowCount = data[data.length - 1].maxRowCount;
+								pageNumber = data[data.length - 1].pageNumber;
+								startIndex = data[data.length - 1].startIndex;
+								totalPageCount = data[data.length - 1].totalPageCount;
+								totalRowCount = data[data.length - 1].totalRowCount;
+								break;
+							}
+							//判断是否为已启用账户
+							if(data[i].accountState == 1){
+								var tr="<tr>"+
+										"<td>"+count+"</td>"+
+										"<td>"+data[i].accountId+"</td>"+
+										"<td>"+data[i].user.userName+"</td>"+
+										"<td>"+data[i].accountBalance+"</td>"+
+										"<td>"+data[i].user.userPhone+"</td>"+
+										"<td><a class='oper' href='#' state='"+data[i].accountState+"'>冻结</a></td>"+
+									"</tr>"
+								$('#tableList').append(tr);
+							}
+						}
+						tile(maxRowCount, pageNumber, startIndex, totalPageCount, totalRowCount);
+					}
+				});
+			}
+			
+			
+			/**
+			 * 全选或反选
+			 * @param {Object} current 事件触发时的元素对象
+			 */
+			function checkAll(current){
+				$("input[name=id]").prop("checked",current.checked);
+			}
+			//冻结用户
+			$(function(){
+				$('#tableList').delegate('.oper', 'click',function(){
+					var accountId = $(this).parent().siblings().eq(1).text();
+					$.ajax({
+						type:"post",
+						url:"http://192.168.1.168:8080/frozenAccount",
+						data:{
+							accountId:accountId
+						},
+						async:true,
+						success:function(data){
+							load();
+						}
+					});
+				})
+				load();  //记得调用函数	
+			})
+		</script>
+	</head>
+	<body>
+		<div class="path">
+			<ol class="breadcrumb">
+				<li><span>当前页面：</span><a href=""><span>管理员操作</span></a></li>
+				<li><a href="">已启用账户</a></li>
+			</ol>
+		</div>
+		<div id="content" style="width: 60%;">
+			<form id="form1" method="get" action="#" class="form-inline">
+				<input type="text" name="accountId" placeholder="按用户名搜索!" autofocus class="form-control input-sm" />
+				<input type="button" onclick="load(1)" value="搜索" class="btn btn-warning btn-sm" />
+			</form>
+			<form id="form2" method="get" action="#">
+				<table id="tableList" class="table table-bordered table-hover">
+					<tr>
+						<th>序号</th>
+						<th>账户</th>
+						<th>姓名</th>
+						<th>账户余额</th>
+						<th>电话</th>
+						<th>操作</th>
+					</tr>
+				</table>
+			</form>
+			<div id="pager">
+			    <ul class="pager"></ul>
+			</div>
+		</div>
+	</body>
+</html>
+=======
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/list1.css" />
+		<script type="text/javascript" src="../js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="../js/pageCounter.js" ></script>
+		<script type="text/javascript" src="../js/H-ui.js"></script>
+		<link rel="stylesheet" href="../css/hui.css" />
+		<style>
+		</style>
+		<script>
+			//返回的分页参数申明
+			var maxRowCount = 0;
+			var pageNumber = 1;
+			var startIndex = 0;
+			var totalPageCount = 0;
+			var totalRowCount = 0;
+			//分页函数
+			function tile(maxRowCount, pageNumber, startIndex, totalPageCount, totalRowCount) {
+				var s = "";
+				//上一页
+				s += "<li class='lastPage'><a><<</a></li>";
+				//分页列表
+				for (var i = 1; i <= totalPageCount; i++) {
+					if (i == pageNumber) {
+						s += "<li class=\"active list\"><a>" + i + "</a></li>";
+					} else {
+						s += "<li class='list'><a>" + i + "</a></li>";
+					}
+				}
+				//下一页
+				s += "<li class='nextPage'><a>>></a></li>";
+				$('.pager').html(s);
+				//点击页数
+				$('.list').click(function() {
+					//改变当前页数
+					pageNumber = $(this).text();
+					//重新加载
+					load(pageNumber);
+				});
+				//上一页
+				$('.lastPage').click(function() {
+					load(pageNumber-1);
+				});
+				//下一页
+				$('.nextPage').click(function() {
+					load(pageNumber+1);
+				});
+			}
+			
+			//加载数据
+			function load(pageNumber){
+				var accountId = $('input[name=accountId]').val();
+				let count = 0;
+				$.ajax({
+					type:"get",
+					dataType: "json",
+					url:"http://192.168.1.168:8080/getOpenedAccounts",
+					async:true,
+					data:{
+						accountId:accountId,
+						pageNumber:pageNumber
+					},
+					success:function(data){
+						console.log(data);
+					$('#tableList tr').eq(0).siblings().remove();
+						//var info = JSON.parse(this.data);
+						for(var i in data){
+							count ++;
+							if(i==data.length-1){
+								console.log(data[data.length-1]);
+								maxRowCount = data[data.length - 1].maxRowCount;
+								pageNumber = data[data.length - 1].pageNumber;
+								startIndex = data[data.length - 1].startIndex;
+								totalPageCount = data[data.length - 1].totalPageCount;
+								totalRowCount = data[data.length - 1].totalRowCount;
+								break;
+							}
+							//判断是否为已启用账户
+							if(data[i].accountState == 1){
+								var tr="<tr>"+
+										"<td>"+count+"</td>"+
+										"<td>"+data[i].accountId+"</td>"+
+										"<td>"+data[i].user.userName+"</td>"+
+										"<td>"+data[i].accountBalance+"</td>"+
+										"<td>"+data[i].user.userPhone+"</td>"+
+										"<td><a class='oper' href='#' state='"+data[i].accountState+"'>冻结</a></td>"+
+									"</tr>"
+								$('#tableList').append(tr);
+							}
+						}
+						tile(maxRowCount, pageNumber, startIndex, totalPageCount, totalRowCount);
+					}
+				});
+			}
+			
+			
+			/**
+			 * 全选或反选
+			 * @param {Object} current 事件触发时的元素对象
+			 */
+			function checkAll(current){
+				$("input[name=id]").prop("checked",current.checked);
+			}
+			//冻结用户
+			$(function(){
+				$('#tableList').delegate('.oper', 'click',function(){
+					var accountId = $(this).parent().siblings().eq(1).text();
+					$.ajax({
+						type:"post",
+						url:"http://192.168.1.168:8080/frozenAccount",
+						data:{
+							accountId:accountId
+						},
+						async:true,
+						success:function(data){
+							load();
+						}
+					});
+				})
+				load();  //记得调用函数	
+			})
+		</script>
+	</head>
+	<body>
+		<div class="path">
+			<ol class="breadcrumb">
+				<li><span>当前页面：</span><a href=""><span>管理员操作</span></a></li>
+				<li><a href="">已启用账户</a></li>
+			</ol>
+		</div>
+		<div id="content" style="width: 60%;">
+			<form id="form1" method="get" action="#" class="form-inline">
+				<input type="text" name="accountId" placeholder="按用户名搜索!" autofocus class="form-control input-sm" />
+				<input type="button" onclick="load(1)" value="搜索" class="btn btn-warning btn-sm" />
+			</form>
+			<form id="form2" method="get" action="#">
+				<table id="tableList" class="table table-bordered table-hover">
+					<tr>
+						<th>序号</th>
+						<th>账户</th>
+						<th>姓名</th>
+						<th>账户余额</th>
+						<th>电话</th>
+						<th>操作</th>
+					</tr>
+				</table>
+			</form>
+			<div id="pager">
+			    <ul class="pager"></ul>
+			</div>
+		</div>
+	</body>
+</html>
+>>>>>>> second commit

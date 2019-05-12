@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8;"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="A live test method of blockchain in a browser" />
+		<meta name="author" content="ZhouLinHu" />
+		<link rel="shortcut icon" href="img/favicon.ico" />
+		<title>BlockChain Wallet</title>
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js" ></script>
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="/" class="navbar-brand">Blockchain Wallet</a>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="active"><a href="#">NewAccount</a></li>
+						<li><a href="Mine.page">Mine</a></li>
+						<li><a href="BlockChain.page">Blockchain</a></li>
+						<li><a href="Transaction.page">Transaction</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<div id="newAccount" class="well well-success">
+				<div class="panel panel-default">
+					<div class="panel-heading">Account List</div>
+					<table class="table" id="table1">
+						<tr>
+							<th>Account Address</th>
+							<th>Amount</th>
+						</tr>
+
+					</table>
+				</div>
+				<div class="panel panel-default" id="newtable">
+					<div class="panel-heading">new account</div>
+					<div class="panel-body">
+						<p>以下是你点击创建账户按钮后创建的账户和私钥，
+							请记住你的私钥，最好将其记在本地避免忘记，私钥
+							只会在创建是显示一次。
+						</p>
+					</div>
+					<table class="table" id="table2">
+						<tr>
+							<th>new address</th>
+							<th>private key</th>
+						</tr>
+					</table>
+				</div>
+				
+				<button id="newAccountButton" class="btn btn-primary ladda-button" onclick="showNewAccount()" >
+					<span class="ladda-label">New Account</span>
+				</button>
+			</div>
+		</div>
+			
+		<script>
+			var accountInfo=null;
+			
+			//封装获取数据方法
+			function getAccountInfo(){
+				$("#table1 tr:nth-child(n+2)").remove();
+				var table=$("#table1");
+				$.get("table1.g",function(data){
+					//转换成JSON对象
+					accountInfo=eval("("+data+")");
+					console.log(accountInfo);
+					//判断是否加载到数据
+					if(accountInfo.length>0){
+						for(i in accountInfo){
+							var acc = accountInfo[i];
+							table.append('<tr>'
+							+'<td>'+accountInfo[i].address+'</td>'
+							+'<td>'+accountInfo[i].balance+'</td>'
+							+'</tr>');
+						}
+					}
+				})
+			}
+
+			function showNewAccount(){
+				$.post("newAc.p",function(data){
+					console.log(data);
+					newaccountInfo=eval("("+data+")");
+					$("#newtable").show();
+					$("#table2").append('<tr>'+'<td>'+newaccountInfo[0].address+'</td>'+'<td>'+newaccountInfo[0].privateKey+'</td>'+'</tr>');
+					$("#table1").append('<tr>'+'<td>'+newaccountInfo[0].address+'</td>'+'<td>'+newaccountInfo[0].balance+'</td>'+'</tr>');
+				});
+			}
+			//Ajax请求账户信息
+			// $("#newAccountButton").click(getAccountInfo());
+			
+			
+			//页面加载完成后执行
+			$(function(){
+				getAccountInfo();
+				$("#newtable").hide();
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,343 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="css/H-ui.css" />
+		<link rel="stylesheet" href="css/newSignUp.css" />
+		<link rel="stylesheet" href="css/hui.css" />
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="js/H-ui.js" ></script>
+		<script>
+			function sub(){
+				if(!/^[a-zA-Z0-9_\u4e00-\u9fa5]+$/.test($('input[name=accountId]').val())){
+			    	 $('.inp-wraper p').eq(0).text("**用户名的格式错误");
+			    }else if($('input[name=accountId]').val().length<5||$('input[name=accountId]').val().length>12){
+			    	 $('.inp-wraper p').eq(0).text("**用户名长度应该为5-12位");
+			    }else{
+			    	 $('.inp-wraper p').eq(0).text("");
+			    }
+               if(!/^[a-zA-Z0-9_\u4e00-\u9fa5]+$/.test($('input[name=accountPassword]').val())){
+			    	 $('.inp-wraper p').eq(1).text("**密码的格式错误");
+			    }else if($('input[name=accountPassword]').val().length<8||$('input[name=accountPassword]').val().length>16){
+			    	 $('.inp-wraper p').eq(1).text("**密码格式错误");
+			    }else{
+			    	 $('.inp-wraper p').eq(1).text("");
+			    }
+                
+                if($('input[name=accountPassword2]').val()!=$('input[name=accountPassword]').val()){
+			    	 $('.inp-wraper p').eq(2).text("**两次输入的密码应该一样");
+                }else{
+			    	 $('.inp-wraper p').eq(2).text("");
+                }
+                
+                if($('input[name=userName]').val().length==0||$('input[name=userName]').val().length>20){
+			    	 $('.inp-wraper p').eq(3).text("**姓名长度应该为1-20位");
+                }else{
+			    	 $('.inp-wraper p').eq(3).text("");
+                }
+                
+                if($('input[name=userAddress]').val().length==0||$('input[name=userAddress]').val().length>50){
+			    	 $('.inp-wraper p').eq(6).text("**家庭地址长度应该为1-50位");
+                }else{
+			    	 $('.inp-wraper p').eq(6).text("");
+                }
+                
+                if(!/^[0-9]*$/.test($('input[name=userPhone]').val())){
+                    $('.inp-wraper p').eq(7).text("**请输入正确的手机号");
+                }else if($('input[name=userPhone]').val().length!=11){
+                	$('.inp-wraper p').eq(7).text("**手机号长度必须为11位");
+                }else{
+			    	 $('.inp-wraper p').eq(7).text("");
+                }
+                
+                if(!/(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test($('input[name=userIdcard]').val())){
+                	$('.inp-wraper p').eq(8).text("**请输入正确的身份证");
+                }else{
+			    	 $('.inp-wraper p').eq(8).text("");
+                }
+                
+                if($('input[name=userMailbox]').val().length==0||$('input[name=userMailbox]').val().length>20){
+			    	 $('.inp-wraper p').eq(9).text("**邮箱长度应该为1-20位");
+                }else{
+			    	 $('.inp-wraper p').eq(9).text("");
+                }
+                var account=$('input[name=accountId]').val();
+                var pass=$('input[name=accountPassword]').val();
+                var name=$('input[name=userName]').val();
+                var birth=$('input[name=userBirthday]').val();
+                var sex=$('input:radio:checked').val();
+                var address=$('input[name=userAddress]').val();
+                var phone=$('input[name=userPhone]').val();
+                var idcard=$('input[name=userIdcard]').val();
+                var mailbox=$('input[name=userMailbox]').val();
+                 console.log(account+' '+pass+' '+name+' '+birth+' '+sex+' '+address+' '+phone+' '+idcard+' '+mailbox);
+                $.ajax({
+                	contentType: 'application/json',
+					xhrFields: {
+						withCredentials: true
+					},
+                	type:"post",
+                	url:"http://192.168.1.168:8080/userEnroll",
+                	data: JSON.stringify({
+                		"account": account,
+                		"password": pass,
+                		"userName": name,
+                		"userGender": sex,
+                		"userBirthday": birth,
+                		"userAddress": address,
+                		"userPhone": phone,
+                		"userIdcard": idcard,
+                		"userMailbox": mailbox
+                	}),
+                	dataType:'text',
+                	success:function(data){
+                		if(data!=null&&data=='success'){
+                			window.location.href="login.html";
+                		}
+                	},
+                	async:true,
+                });
+			}
+		</script>
+	</head>
+	<body>
+		<div id="mask">
+			<form id="form1" action="" method="post">
+				<div class="title">
+					<span>橙子资金注册</span>
+					<a href="login.html">已有账号，去登录</a>
+					<p></p>
+				</div>
+				<div class="inp-wraper">
+					<span>用户名：</span>
+					<input type="text" name="accountId" placeholder="中文英文数字和下划线,长度为5-12位" class="input-text radius size-M">
+					<p></p>
+				</div>
+				<div class="inp-wraper">
+					<span>密码：</span>
+					<input type="password" name="accountPassword" placeholder="英文数字和下划线,长度为8-16位" class="input-text radius size-M">
+					<p></p>
+				</div>
+				<div class="inp-wraper">
+					<span>确认密码：</span>
+					<input type="password" name="accountPassword2" placeholder="密码保持一致" class="input-text radius size-M">
+					<p></p>
+				</div>
+				<div class="inp-wraper">
+					<span>姓名：</span>
+					<input type="text" name="userName" placeholder="长度为1-20位" class="input-text radius size-M">
+					<p></p>
+				</div>
+				<div class="inp-wraper">
+					<span>生日：</span>
+					<input type="date" name="userBirthday" placeholder="" class="input-text radius size-M">
+					<p></p>
+				</div>
+				<div class="inp-wraper">
+					<span>性别：</span>
+					<input type="radio" checked="checked" name="userGender" value="男">
+					<label for="radio-1">男</label>
+					<input type="radio" name="userGender" value="女">
+					<label for="radio-1">女</label>
+					<p></p>
+				</div>
+				<div class="inp-wraper">
+					<span>家庭地址：</span>
+					<input type="text" name="userAddress" placeholder="长度应该为1-50位" class="input-text radius size-M">
+					<p></p>
+				</div>
+				<div class="inp-wraper">
+					<span>手机号：</span>
+					<input type="text" maxlength="11" name="userPhone" placeholder="长度为11位" class="input-text radius size-M">
+					<p></p>
+				</div>
+				<div class="inp-wraper">
+					<span>身份证：</span>
+					<input type="text" maxlength="18" name="userIdcard" placeholder="长度为18位" class="input-text radius size-M">
+					<p></p>
+				</div>
+				<div class="inp-wraper">
+					<span>邮箱：</span>
+					<input type="text" name="userMailbox" placeholder="请填入你的真实邮箱方便找回账号" class="input-text radius size-M">
+					<p></p>
+				</div>
+				<input style="margin: 10px 0 0 240px;" onclick="sub()" type="button" class="btn btn-primary" value="注册" />
+			</form>
+		</div>
+	</body>
+</html>
+=======
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="css/H-ui.css" />
+		<link rel="stylesheet" href="css/newSignUp.css" />
+		<link rel="stylesheet" href="css/hui.css" />
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="js/H-ui.js" ></script>
+		<script>
+			function sub(){
+				if(!/^[a-zA-Z0-9_\u4e00-\u9fa5]+$/.test($('input[name=accountId]').val())){
+			    	 $('.inp-wraper p').eq(0).text("**用户名的格式错误");
+			    }else if($('input[name=accountId]').val().length<5||$('input[name=accountId]').val().length>12){
+			    	 $('.inp-wraper p').eq(0).text("**用户名长度应该为5-12位");
+			    }else{
+			    	 $('.inp-wraper p').eq(0).text("");
+			    }
+               if(!/^[a-zA-Z0-9_\u4e00-\u9fa5]+$/.test($('input[name=accountPassword]').val())){
+			    	 $('.inp-wraper p').eq(1).text("**密码的格式错误");
+			    }else if($('input[name=accountPassword]').val().length<8||$('input[name=accountPassword]').val().length>16){
+			    	 $('.inp-wraper p').eq(1).text("**密码格式错误");
+			    }else{
+			    	 $('.inp-wraper p').eq(1).text("");
+			    }
+                
+                if($('input[name=accountPassword2]').val()!=$('input[name=accountPassword]').val()){
+			    	 $('.inp-wraper p').eq(2).text("**两次输入的密码应该一样");
+                }else{
+			    	 $('.inp-wraper p').eq(2).text("");
+                }
+                
+                if($('input[name=userName]').val().length==0||$('input[name=userName]').val().length>20){
+			    	 $('.inp-wraper p').eq(3).text("**姓名长度应该为1-20位");
+                }else{
+			    	 $('.inp-wraper p').eq(3).text("");
+                }
+                
+                if($('input[name=userAddress]').val().length==0||$('input[name=userAddress]').val().length>50){
+			    	 $('.inp-wraper p').eq(6).text("**家庭地址长度应该为1-50位");
+                }else{
+			    	 $('.inp-wraper p').eq(6).text("");
+                }
+                
+                if(!/^[0-9]*$/.test($('input[name=userPhone]').val())){
+                    $('.inp-wraper p').eq(7).text("**请输入正确的手机号");
+                }else if($('input[name=userPhone]').val().length!=11){
+                	$('.inp-wraper p').eq(7).text("**手机号长度必须为11位");
+                }else{
+			    	 $('.inp-wraper p').eq(7).text("");
+                }
+                
+                if(!/(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test($('input[name=userIdcard]').val())){
+                	$('.inp-wraper p').eq(8).text("**请输入正确的身份证");
+                }else{
+			    	 $('.inp-wraper p').eq(8).text("");
+                }
+                
+                if($('input[name=userMailbox]').val().length==0||$('input[name=userMailbox]').val().length>20){
+			    	 $('.inp-wraper p').eq(9).text("**邮箱长度应该为1-20位");
+                }else{
+			    	 $('.inp-wraper p').eq(9).text("");
+                }
+                var account=$('input[name=accountId]').val();
+                var pass=$('input[name=accountPassword]').val();
+                var name=$('input[name=userName]').val();
+                var birth=$('input[name=userBirthday]').val();
+                var sex=$('input:radio:checked').val();
+                var address=$('input[name=userAddress]').val();
+                var phone=$('input[name=userPhone]').val();
+                var idcard=$('input[name=userIdcard]').val();
+                var mailbox=$('input[name=userMailbox]').val();
+                 console.log(account+' '+pass+' '+name+' '+birth+' '+sex+' '+address+' '+phone+' '+idcard+' '+mailbox);
+                $.ajax({
+                	contentType: 'application/json',
+					xhrFields: {
+						withCredentials: true
+					},
+                	type:"post",
+                	url:"http://192.168.1.168:8080/userEnroll",
+                	data: JSON.stringify({
+                		"account": account,
+                		"password": pass,
+                		"userName": name,
+                		"userGender": sex,
+                		"userBirthday": birth,
+                		"userAddress": address,
+                		"userPhone": phone,
+                		"userIdcard": idcard,
+                		"userMailbox": mailbox
+                	}),
+                	dataType:'text',
+                	success:function(data){
+                		if(data!=null&&data=='success'){
+                			window.location.href="login.html";
+                		}
+                	},
+                	async:true,
+                });
+			}
+		</script>
+	</head>
+	<body>
+		<div id="mask">
+			<form id="form1" action="" method="post">
+				<div class="title">
+					<span>橙子资金注册</span>
+					<a href="login.html">已有账号，去登录</a>
+					<p></p>
+				</div>
+				<div class="inp-wraper">
+					<span>用户名：</span>
+					<input type="text" name="accountId" placeholder="中文英文数字和下划线,长度为5-12位" class="input-text radius size-M">
+					<p></p>
+				</div>
+				<div class="inp-wraper">
+					<span>密码：</span>
+					<input type="password" name="accountPassword" placeholder="英文数字和下划线,长度为8-16位" class="input-text radius size-M">
+					<p></p>
+				</div>
+				<div class="inp-wraper">
+					<span>确认密码：</span>
+					<input type="password" name="accountPassword2" placeholder="密码保持一致" class="input-text radius size-M">
+					<p></p>
+				</div>
+				<div class="inp-wraper">
+					<span>姓名：</span>
+					<input type="text" name="userName" placeholder="长度为1-20位" class="input-text radius size-M">
+					<p></p>
+				</div>
+				<div class="inp-wraper">
+					<span>生日：</span>
+					<input type="date" name="userBirthday" placeholder="" class="input-text radius size-M">
+					<p></p>
+				</div>
+				<div class="inp-wraper">
+					<span>性别：</span>
+					<input type="radio" checked="checked" name="userGender" value="男">
+					<label for="radio-1">男</label>
+					<input type="radio" name="userGender" value="女">
+					<label for="radio-1">女</label>
+					<p></p>
+				</div>
+				<div class="inp-wraper">
+					<span>家庭地址：</span>
+					<input type="text" name="userAddress" placeholder="长度应该为1-50位" class="input-text radius size-M">
+					<p></p>
+				</div>
+				<div class="inp-wraper">
+					<span>手机号：</span>
+					<input type="text" maxlength="11" name="userPhone" placeholder="长度为11位" class="input-text radius size-M">
+					<p></p>
+				</div>
+				<div class="inp-wraper">
+					<span>身份证：</span>
+					<input type="text" maxlength="18" name="userIdcard" placeholder="长度为18位" class="input-text radius size-M">
+					<p></p>
+				</div>
+				<div class="inp-wraper">
+					<span>邮箱：</span>
+					<input type="text" name="userMailbox" placeholder="请填入你的真实邮箱方便找回账号" class="input-text radius size-M">
+					<p></p>
+				</div>
+				<input style="margin: 10px 0 0 240px;" onclick="sub()" type="button" class="btn btn-primary" value="注册" />
+			</form>
+		</div>
+	</body>
+</html>
+>>>>>>> second commit

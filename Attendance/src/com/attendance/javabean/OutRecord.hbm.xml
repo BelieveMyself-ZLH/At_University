@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+                            "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+                            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.attendance.javabean">
+	<class name="OutRecord" table="out_record_tab">
+		<id name="e_id" column="e_id"></id>
+		<property name="out_num" type="string" column="out_num" />
+		<property name="out_time" type="string" column="out_time"></property>
+		<property name="back_time" type="string" column="back_time"></property>
+		<property name="out_days" type="int" column="out_days"></property>
+	</class>
+</hibernate-mapping>  

@@ -1,0 +1,265 @@
+<<<<<<< HEAD
+*{
+	margin: 0;
+	padding: 0;
+}
+.content{
+	margin: 0 auto;
+	width: 900px;
+	height: 600px;
+	/*background: red;*/
+}
+.content .content-left{
+	width: 400px;
+	height: 305px;
+	/*background: red;*/
+	float: left;
+	margin: 0 25px;
+}
+.content-left .title{
+	width: 100%;
+	height: 40px;
+	border-bottom: 1px solid #CCCCCC;
+}
+.content-left .title span{
+	display: inline-block;
+	line-height: 40px;
+	font-weight: bold;
+	margin-left: 30px;
+}
+.content-left .news-list{
+	margin-top: 20px;
+	width: 90%;
+}
+.content-left .news-list ul li{
+	margin: 0;
+	line-height: 30px;
+	border-bottom: 1px dashed #CCCCCC;
+}
+
+.content .content-right{
+	position: relative;
+	width: 400px;
+	height: 220px;
+	/*background: green;*/
+	float: left;
+	margin: 30px 25px 0 25px;
+	overflow: hidden;
+}
+.content .content-right ul{
+	width: 2000px;
+}
+.content .content-right ul li{
+	list-style: none;
+	float: left;
+	height: 100%;
+	width: 400px;
+}
+.content .content-right ul li img{
+	width: 400px;
+}
+.content-right .tab-dot{
+	text-align: center;
+	bottom: 5px;
+	left: 50%;
+	margin-left: -50px;
+	width: 100px;
+	height: 12px;
+	/*background: green;*/
+	position: absolute;
+}
+.content-right .tab-dot i{
+	margin: 0;
+	display: inline-block;
+	line-height: 12px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: white;
+	cursor: pointer;
+}
+.content-right .tab-dot .active{
+	background: #1E50AE;
+}
+.arrow-left,.arrow-right{
+	z-index: 100;
+	position: absolute;
+	display: inline-block;
+	top: 50%;
+	margin-top: -25px;
+	width: 50px;
+	height: 50px;
+	background: url(../img/arrow.png) no-repeat;
+}
+.content-right .arrow-left{
+	background-position: -10px -90px;
+	left: 10px;
+}
+.content-right .arrow-right{
+	right: 10px;
+	background-position: -160px -90px; /*mouseleave*/
+	
+}
+.arrow-left-on,.arrow-right-on{
+	display: none;
+	z-index: 100;
+	position: absolute;
+	top: 50%;
+	margin-top: -20px;
+	width: 50px;
+	height: 50px;
+	background: url(../img/arrow.png) no-repeat;
+}
+.content-right .arrow-left-on{
+	background-position: -110px -96px;
+	left: 10px;
+}
+.content-right .arrow-right-on{
+	right: 10px;
+	background-position: -60px -96px;	/*mouseenter*/
+}
+.bottom-news{
+	width:100%;
+	height: 300px;
+	/*background: red;*/
+	clear: both;
+	border:1px solid #9DA0A4;
+	border-radius: 10px;
+	padding-left: 10px;
+	padding-top: 10px;
+	background: whitesmoke;
+}
+
+=======
+*{
+	margin: 0;
+	padding: 0;
+}
+.content{
+	margin: 0 auto;
+	width: 900px;
+	height: 600px;
+	/*background: red;*/
+}
+.content .content-left{
+	width: 400px;
+	height: 305px;
+	/*background: red;*/
+	float: left;
+	margin: 0 25px;
+}
+.content-left .title{
+	width: 100%;
+	height: 40px;
+	border-bottom: 1px solid #CCCCCC;
+}
+.content-left .title span{
+	display: inline-block;
+	line-height: 40px;
+	font-weight: bold;
+	margin-left: 30px;
+}
+.content-left .news-list{
+	margin-top: 20px;
+	width: 90%;
+}
+.content-left .news-list ul li{
+	margin: 0;
+	line-height: 30px;
+	border-bottom: 1px dashed #CCCCCC;
+}
+
+.content .content-right{
+	position: relative;
+	width: 400px;
+	height: 220px;
+	/*background: green;*/
+	float: left;
+	margin: 30px 25px 0 25px;
+	overflow: hidden;
+}
+.content .content-right ul{
+	width: 2000px;
+}
+.content .content-right ul li{
+	list-style: none;
+	float: left;
+	height: 100%;
+	width: 400px;
+}
+.content .content-right ul li img{
+	width: 400px;
+}
+.content-right .tab-dot{
+	text-align: center;
+	bottom: 5px;
+	left: 50%;
+	margin-left: -50px;
+	width: 100px;
+	height: 12px;
+	/*background: green;*/
+	position: absolute;
+}
+.content-right .tab-dot i{
+	margin: 0;
+	display: inline-block;
+	line-height: 12px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: white;
+	cursor: pointer;
+}
+.content-right .tab-dot .active{
+	background: #1E50AE;
+}
+.arrow-left,.arrow-right{
+	z-index: 100;
+	position: absolute;
+	display: inline-block;
+	top: 50%;
+	margin-top: -25px;
+	width: 50px;
+	height: 50px;
+	background: url(../img/arrow.png) no-repeat;
+}
+.content-right .arrow-left{
+	background-position: -10px -90px;
+	left: 10px;
+}
+.content-right .arrow-right{
+	right: 10px;
+	background-position: -160px -90px; /*mouseleave*/
+	
+}
+.arrow-left-on,.arrow-right-on{
+	display: none;
+	z-index: 100;
+	position: absolute;
+	top: 50%;
+	margin-top: -20px;
+	width: 50px;
+	height: 50px;
+	background: url(../img/arrow.png) no-repeat;
+}
+.content-right .arrow-left-on{
+	background-position: -110px -96px;
+	left: 10px;
+}
+.content-right .arrow-right-on{
+	right: 10px;
+	background-position: -60px -96px;	/*mouseenter*/
+}
+.bottom-news{
+	width:100%;
+	height: 300px;
+	/*background: red;*/
+	clear: both;
+	border:1px solid #9DA0A4;
+	border-radius: 10px;
+	padding-left: 10px;
+	padding-top: 10px;
+	background: whitesmoke;
+}
+
+>>>>>>> second commit

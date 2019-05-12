@@ -1,0 +1,9 @@
+<<<<<<< HEAD
+Manifest-Vsersion: 1.0
+Class-Path: .
+Main-Class: com/zlh/SnakeDemo
+=======
+Manifest-Vsersion: 1.0
+Class-Path: .
+Main-Class: com/zlh/SnakeDemo
+>>>>>>> second commit

@@ -1,0 +1,185 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+		<script type="text/javascript" src="../js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="../js/H-ui.js" ></script>
+		<style>
+			.change-pwd{
+				width: 600px;
+				height: 500px;
+				background: #F9F9F9;
+				margin: 0 auto;
+				border: 1px solid #ADADAD;
+				border-radius: 10px;
+			}
+			.input-group:first-child{
+				margin-top: 20%;
+			}
+			.input-group{
+				margin-left: 25%;
+				margin-top: 25px;
+				width: 50%;
+			}
+			.input-group span{
+				width: 80px;
+			}
+			.btn-sub{
+				width: 50%;
+				text-align: center;
+				margin: 30px auto;
+			}
+			.btn-sub button{
+				margin: 0px 15px;
+			}
+		</style>
+		<script>
+			function sub(ev){
+				ev = event || window.event;
+				var prePwd = $('input[name=prePwd]');
+				var newPwd = $('input[name=newPwd]');
+				var surePwd = $('input[name=surePwd]');
+				if(newPwd.val()==surePwd.val()){
+					$.ajax({
+						type:"post",
+						url:"",
+						data:$('#form1').serialize(),
+						success:function(){
+							$.Huimodalalert('信息修改成功',2000);
+						},
+						error:function(){
+							alert('出错啦！');
+						}
+					});
+				}else{
+					parent.showModal('提示', '新密码与确认密码不同！');
+					ev.preventDefault();
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="path">
+			<ol class="breadcrumb">
+				<li><span>当前页面：</span><a href="">管理员操作</a></li>
+				<li><a href="">修改管理员信息</a></li>
+			</ol>
+		</div>
+		<div class="change-pwd">
+			<form id="form1" action="" method="post">
+				<div class="input-group">
+				    <span class="input-group-addon" id="basic-addon1">原密码</span>
+				    <input type="password" name="prePwd" autofocus="autofocus" class="form-control" value="" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group">
+				    <span class="input-group-addon" id="basic-addon1">新密码</span>
+				    <input type="password" name="newPwd" class="form-control" value="" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group">
+				    <span class="input-group-addon" id="basic-addon1">确认密码</span>
+				    <input type="password" name="surePwd" class="form-control" value="" aria-describedby="basic-addon1">
+				</div>
+				<div class="btn-sub">
+					<button type="reset" class="btn btn-primary">重置</button>
+					<button type="submit" onclick="sub()" class="btn btn-info">提交</button>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
+=======
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+		<script type="text/javascript" src="../js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="../js/H-ui.js" ></script>
+		<style>
+			.change-pwd{
+				width: 600px;
+				height: 500px;
+				background: #F9F9F9;
+				margin: 0 auto;
+				border: 1px solid #ADADAD;
+				border-radius: 10px;
+			}
+			.input-group:first-child{
+				margin-top: 20%;
+			}
+			.input-group{
+				margin-left: 25%;
+				margin-top: 25px;
+				width: 50%;
+			}
+			.input-group span{
+				width: 80px;
+			}
+			.btn-sub{
+				width: 50%;
+				text-align: center;
+				margin: 30px auto;
+			}
+			.btn-sub button{
+				margin: 0px 15px;
+			}
+		</style>
+		<script>
+			function sub(ev){
+				ev = event || window.event;
+				var prePwd = $('input[name=prePwd]');
+				var newPwd = $('input[name=newPwd]');
+				var surePwd = $('input[name=surePwd]');
+				if(newPwd.val()==surePwd.val()){
+					$.ajax({
+						type:"post",
+						url:"",
+						data:$('#form1').serialize(),
+						success:function(){
+							$.Huimodalalert('信息修改成功',2000);
+						},
+						error:function(){
+							alert('出错啦！');
+						}
+					});
+				}else{
+					parent.showModal('提示', '新密码与确认密码不同！');
+					ev.preventDefault();
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="path">
+			<ol class="breadcrumb">
+				<li><span>当前页面：</span><a href="">管理员操作</a></li>
+				<li><a href="">修改管理员信息</a></li>
+			</ol>
+		</div>
+		<div class="change-pwd">
+			<form id="form1" action="" method="post">
+				<div class="input-group">
+				    <span class="input-group-addon" id="basic-addon1">原密码</span>
+				    <input type="password" name="prePwd" autofocus="autofocus" class="form-control" value="" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group">
+				    <span class="input-group-addon" id="basic-addon1">新密码</span>
+				    <input type="password" name="newPwd" class="form-control" value="" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group">
+				    <span class="input-group-addon" id="basic-addon1">确认密码</span>
+				    <input type="password" name="surePwd" class="form-control" value="" aria-describedby="basic-addon1">
+				</div>
+				<div class="btn-sub">
+					<button type="reset" class="btn btn-primary">重置</button>
+					<button type="submit" onclick="sub()" class="btn btn-info">提交</button>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
+>>>>>>> second commit

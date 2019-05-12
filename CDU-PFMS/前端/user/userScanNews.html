@@ -1,0 +1,248 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/list.css" />
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="../css/userScanNews.css" />
+		<script type="text/javascript" src="../js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="../js/tabNews.js" ></script>
+		<script type="text/javascript" src="../bootstrap/js/bootstrap.js" ></script>
+		<script>
+			$(function(){
+				$('.arrow-left').mouseenter(function(){
+					$(this).fadeOut(100);
+					$('.arrow-left-on').fadeIn(100);
+				});
+				$('.arrow-left-on').mouseleave(function(){
+					$(this).fadeOut(100);
+					$('.arrow-left').fadeIn(100);
+				});
+				$('.arrow-right').mouseenter(function(){
+					$(this).fadeOut(100);
+					$('.arrow-right-on').fadeIn(100);
+					
+				});
+				$('.arrow-right-on').mouseleave(function(){
+					$(this).fadeOut(100);
+					$('.arrow-right').fadeIn(100);
+				});
+				//右边轮播图
+				tabNews();
+				
+				//加载新闻列表
+				load();
+				function load(){
+=======
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/list.css" />
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="../css/userScanNews.css" />
+		<script type="text/javascript" src="../js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="../js/tabNews.js" ></script>
+		<script type="text/javascript" src="../bootstrap/js/bootstrap.js" ></script>
+		<script>
+			$(function(){
+				$('.arrow-left').mouseenter(function(){
+					$(this).fadeOut(100);
+					$('.arrow-left-on').fadeIn(100);
+				});
+				$('.arrow-left-on').mouseleave(function(){
+					$(this).fadeOut(100);
+					$('.arrow-left').fadeIn(100);
+				});
+				$('.arrow-right').mouseenter(function(){
+					$(this).fadeOut(100);
+					$('.arrow-right-on').fadeIn(100);
+					
+				});
+				$('.arrow-right-on').mouseleave(function(){
+					$(this).fadeOut(100);
+					$('.arrow-right').fadeIn(100);
+				});
+				//右边轮播图
+				tabNews();
+				
+				//加载新闻列表
+				load();
+				function load(){
+>>>>>>> second commit
+					$.ajax({
+						type:"get",
+						url:"../test/news.json",
+						async:true,
+<<<<<<< HEAD
+						dataType:"json",
+						success:function(data){
+							//记录新闻显示条数
+							var count = 0;
+							for(var i in data){
+								//获取随机数
+								var j = Math.floor(Math.random()*15);
+								//最多显示6条新闻标题
+								if(count<6){
+									var li = "<li><a class='curr' href='javascript:;'>"+data[j].newsTitle+"</a></li>";
+									$('#tableList').append(li);
+									count++;
+								}
+							}
+						}
+					});
+				}
+				//点击显示新闻内容
+				$('#tableList').delegate('.curr', 'click', function(){
+					//清空显示区域
+					$('.bottom-news').html('');
+					//获取当前点击的标题
+					var title = $(this).text();
+					$.ajax({
+						type:"get",
+						url:"../test/news.json",
+						async:true,
+						success:function(data){
+							for(var i in data){
+								//查找相同标题的新闻并显示
+								if(data[i].newsTitle == title){
+									$('.bottom-news').html(data[i].newsInfo);
+									return;
+								}
+							}
+						}
+					});
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div class="path">
+			<ol class="breadcrumb">
+				<li><span>当前页面：</span><a href=""><span>用户查看信息</span></a></li>
+				<li><a href="">新闻公告</a></li>
+			</ol>
+		</div>
+		<div class="content">
+			<div class="content-left">
+				<div class="title">
+					<span>热点要闻</span>
+				</div>
+				<div class="news-list">
+					<ul id="tableList"></ul>
+				</div>
+			</div>
+			
+			<div class="content-right">
+				<a class="arrow-left-on" href="jacascript:;"></a>
+				<a class="arrow-right-on" href="javascript:;"></a>
+				<a class="arrow-left" href=""></a>
+				<a class="arrow-right" href=""></a>
+				<div class="tab-dot">
+					<i class="active"></i>
+					<i></i>
+					<i></i>
+					<i></i>
+					<i></i>
+				</div>
+				<ul>
+					<li><a href=""><img src="../img/right_news1.jpg"/></a></li>
+					<li><a href=""><img src="../img/right_news2.jpg"/></a></li>
+					<li><a href=""><img src="../img/right_news3.jpg"/></a></li>
+					<li><a href=""><img src="../img/right_news4.jpg"/></a></li>
+					<li><a href=""><img src="../img/right_news5.jpg"/></a></li>
+				</ul>
+			</div>
+			<!--新闻内容-->
+			<div class="bottom-news"></div>
+		</div>
+	</body>
+</html>
+=======
+						dataType:"json",
+						success:function(data){
+							//记录新闻显示条数
+							var count = 0;
+							for(var i in data){
+								//获取随机数
+								var j = Math.floor(Math.random()*15);
+								//最多显示6条新闻标题
+								if(count<6){
+									var li = "<li><a class='curr' href='javascript:;'>"+data[j].newsTitle+"</a></li>";
+									$('#tableList').append(li);
+									count++;
+								}
+							}
+						}
+					});
+				}
+				//点击显示新闻内容
+				$('#tableList').delegate('.curr', 'click', function(){
+					//清空显示区域
+					$('.bottom-news').html('');
+					//获取当前点击的标题
+					var title = $(this).text();
+					$.ajax({
+						type:"get",
+						url:"../test/news.json",
+						async:true,
+						success:function(data){
+							for(var i in data){
+								//查找相同标题的新闻并显示
+								if(data[i].newsTitle == title){
+									$('.bottom-news').html(data[i].newsInfo);
+									return;
+								}
+							}
+						}
+					});
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div class="path">
+			<ol class="breadcrumb">
+				<li><span>当前页面：</span><a href=""><span>用户查看信息</span></a></li>
+				<li><a href="">新闻公告</a></li>
+			</ol>
+		</div>
+		<div class="content">
+			<div class="content-left">
+				<div class="title">
+					<span>热点要闻</span>
+				</div>
+				<div class="news-list">
+					<ul id="tableList"></ul>
+				</div>
+			</div>
+			
+			<div class="content-right">
+				<a class="arrow-left-on" href="jacascript:;"></a>
+				<a class="arrow-right-on" href="javascript:;"></a>
+				<a class="arrow-left" href=""></a>
+				<a class="arrow-right" href=""></a>
+				<div class="tab-dot">
+					<i class="active"></i>
+					<i></i>
+					<i></i>
+					<i></i>
+					<i></i>
+				</div>
+				<ul>
+					<li><a href=""><img src="../img/right_news1.jpg"/></a></li>
+					<li><a href=""><img src="../img/right_news2.jpg"/></a></li>
+					<li><a href=""><img src="../img/right_news3.jpg"/></a></li>
+					<li><a href=""><img src="../img/right_news4.jpg"/></a></li>
+					<li><a href=""><img src="../img/right_news5.jpg"/></a></li>
+				</ul>
+			</div>
+			<!--新闻内容-->
+			<div class="bottom-news"></div>
+		</div>
+	</body>
+</html>
+>>>>>>> second commit

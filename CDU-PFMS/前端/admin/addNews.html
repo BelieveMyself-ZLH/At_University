@@ -1,0 +1,233 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="../css/list.css" />
+		<script type="text/javascript" src="../js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="../js/H-ui.js" ></script>
+		<style>
+			#content{
+				background: #F5F5F5;
+				border-radius: 10px;
+				height: 500px;
+			}
+			.form-control{
+				width: 200px;
+				float: left;
+				margin-top: 20px;
+			}
+			#content .news-title{
+				margin-top: 20px;
+			}
+			#content span{
+				display: inline-block;
+				float: left;
+				line-height: 30px;
+				margin: 25px 10px 8px 20px;
+			}
+			#content .news-sum{
+				clear: both;
+			}
+			#content .news-info{
+				clear: both;
+			}
+			.news-info textarea{
+				margin-top: 20px;
+				resize: none;
+				padding-left: 10px;
+			}
+			.btn-sub{
+				margin-left: 62px;
+			}
+			.btn-sub button{
+				margin-right: 20px;
+			}
+		</style>
+		<script>
+			var newsTitle;
+			var newsTime;
+			var newsSum;
+			var newsContent;
+			function submit1(){
+								ev = event||window.event;
+			//					alert(newsTitle);
+								if(newsTitle==""||newsTime==""||newsSum==""||newsContent==""){
+									ev.preventDefault();
+									alert("信息不能为空！");
+									return;
+								}
+								$.ajax({
+									type:"post",
+									contentType: 'application/json',
+									xhrFields: {
+										withCredentials: true
+									},
+									url:"http://192.168.1.168:8080/addNews",
+									data:JSON.stringify({
+										newsTitle:$('input[name=newsTitle]').val(),
+										newsTime:$('input[name=newsTime]').val(),
+										newsSum:$('input[name=newsSum]').val(),
+										newsContent:$('textarea[name=newsInfo]').val()
+									}),
+									success:function(){
+			//							location.href = "newsManage.html";
+										location.href="newsManage.html";
+										$.Huimodalalert("添加新闻成功", 2000);
+									}
+								});
+							}
+			$(function(){
+				
+			})
+		</script>
+	</head>
+	<body>
+		<div class="path">
+			<ol class="breadcrumb">
+				<li><span>当前页面：</span><a href=""><span>管理员操作</span></a></li>
+				<li><a href="">新闻管理</a></li>
+				<li><a href="">增加新闻</a></li>
+			</ol>
+		</div>
+		<div id="content">
+			<form id="form1" action="newsManage.html">
+				<div class="news-title">
+				    <span>标题:</span><input class="form-control" autofocus="autofocus" type="text" name="newsTitle">
+				</div>
+				<div class="news-sum">
+					<span>摘要:</span><input class="form-control" type="text" name="newsSum">
+				</div>
+				<div class="news-time">
+					<span>时间:</span><input class="form-control" type="date" name="newsTime">
+				</div>
+				<div class="news-info">
+					<span>内容:</span><textarea name="newsInfo" rows="14" cols="60"></textarea>
+				</div>
+				<div class="btn-sub">
+					<button type="button" onclick="submit1()" class="btn btn-success">提交</button>
+					<button type="reset" class="btn btn-info">取消</button>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
+=======
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="../css/list.css" />
+		<script type="text/javascript" src="../js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="../js/H-ui.js" ></script>
+		<style>
+			#content{
+				background: #F5F5F5;
+				border-radius: 10px;
+				height: 500px;
+			}
+			.form-control{
+				width: 200px;
+				float: left;
+				margin-top: 20px;
+			}
+			#content .news-title{
+				margin-top: 20px;
+			}
+			#content span{
+				display: inline-block;
+				float: left;
+				line-height: 30px;
+				margin: 25px 10px 8px 20px;
+			}
+			#content .news-sum{
+				clear: both;
+			}
+			#content .news-info{
+				clear: both;
+			}
+			.news-info textarea{
+				margin-top: 20px;
+				resize: none;
+				padding-left: 10px;
+			}
+			.btn-sub{
+				margin-left: 62px;
+			}
+			.btn-sub button{
+				margin-right: 20px;
+			}
+		</style>
+		<script>
+			var newsTitle;
+			var newsTime;
+			var newsSum;
+			var newsContent;
+			function submit1(){
+								ev = event||window.event;
+			//					alert(newsTitle);
+								if(newsTitle==""||newsTime==""||newsSum==""||newsContent==""){
+									ev.preventDefault();
+									alert("信息不能为空！");
+									return;
+								}
+								$.ajax({
+									type:"post",
+									contentType: 'application/json',
+									xhrFields: {
+										withCredentials: true
+									},
+									url:"http://192.168.1.168:8080/addNews",
+									data:JSON.stringify({
+										newsTitle:$('input[name=newsTitle]').val(),
+										newsTime:$('input[name=newsTime]').val(),
+										newsSum:$('input[name=newsSum]').val(),
+										newsContent:$('textarea[name=newsInfo]').val()
+									}),
+									success:function(){
+			//							location.href = "newsManage.html";
+										location.href="newsManage.html";
+										$.Huimodalalert("添加新闻成功", 2000);
+									}
+								});
+							}
+			$(function(){
+				
+			})
+		</script>
+	</head>
+	<body>
+		<div class="path">
+			<ol class="breadcrumb">
+				<li><span>当前页面：</span><a href=""><span>管理员操作</span></a></li>
+				<li><a href="">新闻管理</a></li>
+				<li><a href="">增加新闻</a></li>
+			</ol>
+		</div>
+		<div id="content">
+			<form id="form1" action="newsManage.html">
+				<div class="news-title">
+				    <span>标题:</span><input class="form-control" autofocus="autofocus" type="text" name="newsTitle">
+				</div>
+				<div class="news-sum">
+					<span>摘要:</span><input class="form-control" type="text" name="newsSum">
+				</div>
+				<div class="news-time">
+					<span>时间:</span><input class="form-control" type="date" name="newsTime">
+				</div>
+				<div class="news-info">
+					<span>内容:</span><textarea name="newsInfo" rows="14" cols="60"></textarea>
+				</div>
+				<div class="btn-sub">
+					<button type="button" onclick="submit1()" class="btn btn-success">提交</button>
+					<button type="reset" class="btn btn-info">取消</button>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
+>>>>>>> second commit

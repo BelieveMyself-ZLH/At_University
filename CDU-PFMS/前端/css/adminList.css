@@ -1,0 +1,56 @@
+<<<<<<< HEAD
+#header{
+	width: 100%;
+	position: relative;
+	margin-top: 5px;
+}
+#header ul{
+	margin-left: 30px;
+}
+#content{
+	width: 60%;
+	margin: 40px auto;
+}
+#content table tr th,td{
+	text-align: center;
+}
+#pager .pager-wrapper{
+	/*text-align: center;*/
+}
+#pager ul li{
+	cursor: pointer;
+}
+#pager .pager .next a{
+	margin: 0 5px;
+}
+.search{
+    margin-left:38%;
+=======
+#header{
+	width: 100%;
+	position: relative;
+	margin-top: 5px;
+}
+#header ul{
+	margin-left: 30px;
+}
+#content{
+	width: 60%;
+	margin: 40px auto;
+}
+#content table tr th,td{
+	text-align: center;
+}
+#pager .pager-wrapper{
+	/*text-align: center;*/
+}
+#pager ul li{
+	cursor: pointer;
+}
+#pager .pager .next a{
+	margin: 0 5px;
+}
+.search{
+    margin-left:38%;
+>>>>>>> second commit
+}

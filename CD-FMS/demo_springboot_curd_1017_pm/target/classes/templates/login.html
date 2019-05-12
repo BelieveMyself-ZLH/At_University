@@ -1,0 +1,132 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<style>
+    body {
+        font-size: 12px;
+        background-color: #6495ED;
+    }
+    #content {
+        position: relative;
+        width: 400px;
+        margin: 200px auto 0px;
+        padding-bottom: 20px;
+        background-color: #F5F5F5;
+        border-radius: 5px;
+    }
+    #content dl dt {
+        height: 40px;
+        font-size: 16px;
+        border-bottom: solid 1px #CCCCCC;
+        margin: 20px 0px 40px;
+    }
+    #content dl dt span {
+        position: absolute;
+        width: 100px;
+        top: 30px;
+        left: 150px;
+        letter-spacing: 3px;
+        background-color: #F5F5F5;
+        text-align: center;
+    }
+    #content dl dd {
+        width: 300px;
+        margin: 20px auto;
+    }
+    #content dl dd input {
+        width: 100%;
+    }
+</style>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+     $(function() {
+    	 $("#userName").get(0).select();
+     });
+</script>
+</head>
+<body>
+    <div id="content">
+        <form method="post" action="login">
+            <dl>
+                <dt><span>用户登录</span></dt>
+                <dd><input type="text" id="userName" name="userName" required 
+                    placeholder="用户名" autofocus class="form-control" th:value="${param.userName}" /></dd>
+                <dd><input type="password" name="password" required 
+                    placeholder="密码" class="form-control" th:value="${param.password}" /></dd>
+                <dd th:text="${error}" style="color:red;text-align:center;"></dd>
+                <dd><input type="submit" value="登 录" class="btn btn-primary" /></dd>
+            </dl>        
+        </form>
+    </div>
+</body>
+=======
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<style>
+    body {
+        font-size: 12px;
+        background-color: #6495ED;
+    }
+    #content {
+        position: relative;
+        width: 400px;
+        margin: 200px auto 0px;
+        padding-bottom: 20px;
+        background-color: #F5F5F5;
+        border-radius: 5px;
+    }
+    #content dl dt {
+        height: 40px;
+        font-size: 16px;
+        border-bottom: solid 1px #CCCCCC;
+        margin: 20px 0px 40px;
+    }
+    #content dl dt span {
+        position: absolute;
+        width: 100px;
+        top: 30px;
+        left: 150px;
+        letter-spacing: 3px;
+        background-color: #F5F5F5;
+        text-align: center;
+    }
+    #content dl dd {
+        width: 300px;
+        margin: 20px auto;
+    }
+    #content dl dd input {
+        width: 100%;
+    }
+</style>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+     $(function() {
+    	 $("#userName").get(0).select();
+     });
+</script>
+</head>
+<body>
+    <div id="content">
+        <form method="post" action="login">
+            <dl>
+                <dt><span>用户登录</span></dt>
+                <dd><input type="text" id="userName" name="userName" required 
+                    placeholder="用户名" autofocus class="form-control" th:value="${param.userName}" /></dd>
+                <dd><input type="password" name="password" required 
+                    placeholder="密码" class="form-control" th:value="${param.password}" /></dd>
+                <dd th:text="${error}" style="color:red;text-align:center;"></dd>
+                <dd><input type="submit" value="登 录" class="btn btn-primary" /></dd>
+            </dl>        
+        </form>
+    </div>
+</body>
+>>>>>>> second commit
+</html>

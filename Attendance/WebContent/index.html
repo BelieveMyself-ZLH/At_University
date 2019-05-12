@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>员工考勤</title>
+		<link rel="stylesheet" href="css/Attendancestyle.css" />
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+	</head>
+	<body>
+		<div class="leftMenu">
+			<div class="logoDiv">
+				<img src="img/logo.png" class="logoImg"/>
+				<p class="logoTitle">考勤管理系统</p>
+			</div>
+			<div class="center">
+				<h4 class="userName" name="usrName">8888</h4>
+				<h6 class="date">20:00:00</h6>
+				<!--#表示跳到当前界面-->
+				<a href="login.html" class="login.html">退出登录</a>
+			</div>
+			
+			<div class="bottom">
+				<h4 class="gongneng_title">
+					功能实现
+				</h4>
+				<div class="navi gongneng">
+					<button class="btn" id="daka">打卡</button>
+				</div>
+				<div class="navi gongneng">
+					<button class="btn" id="qingjia">请假</button>
+				</div>
+				<h4 class="book_title">
+					记录查询
+				</h4>
+				<div class="navi book">
+					<button class="btn" id="employee_inf_tab">员工信息表</button>
+				</div>
+				<div class="navi book">
+					<button class="btn" id="attendance_record_tab">出勤记录表</button>
+				</div>
+				<div class="navi book">
+					<button class="btn" id="out_record_tab">出差记录表</button>
+				</div>
+				<div class="navi book">
+					<button class="btn" id="overtime_record_tab">加班记录表</button>
+				</div>
+				<div class="navi book">
+					<button class="btn" id="off_record_tab">请假记录表</button>
+				</div>
+				<div class="navi book">
+					<button class="btn" id="month_record_tab">月统计记录表</button>
+				</div>
+				<h4 class="user_title">
+					用户管理
+				</h4>
+				<div class="navi user">
+					<button class="btn" id="userInfo">用户信息</button>
+				</div>
+				<div class="navi user">
+					<button class="btn" id="updatePasw">修改密码</button>
+				</div>
+				
+			</div>
+		</div>
+		
+		<div class="rightContent">
+			<iframe class="iframes" id="iframes" src=""></iframe>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+	<script type="text/javascript" src="js/Attendancemain.js" ></script>
+</html>

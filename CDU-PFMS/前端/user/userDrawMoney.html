@@ -1,0 +1,240 @@
+<<<<<<< HEAD
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/ddt.css" />
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/hui.css" />
+		<script type="text/javascript" src="../js/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="../js/H-ui.js"></script>
+		<style>
+			#body{
+				position: relative;
+			}
+			.yue{
+				position: absolute;
+				width: 200px;
+				height: 30px;
+				background: #C7C7C7;
+				border: 1px solid #C7C7C7;
+				border-radius: 10px;
+				left: 50%;
+				margin-left: -100px;
+				top: 40px;
+				text-align: center;
+			}
+			.yue span{
+				display: inline-block;
+				line-height: 30px;
+			}
+
+		</style>
+		<script>
+			function sub(ev){
+				ev = event||window.event;
+				//获取输入的钱数值
+				var money = $('#drawmoney').val();
+				//判断是否为空
+				if(money==0||money==null){
+					parent.showModal('提示', '金额不能为空！');
+					ev.preventDefault();//阻止提交
+					return;
+				}else{
+					//获取用户数据库的余额
+					$.ajax({
+						contentType:'application/json',
+						xhrFields:{
+							withCredentials: true
+						},
+						type:"post",
+						url:"http://192.168.1.168:8080/account/drawmoney",
+						data: JSON.stringify({"balance": money}),
+						dataType: 'text',
+						async:true,
+							if(data!=null&&data=='success'){
+								$.Huimodalalert('取款成功', 2000);
+								$("#drawmoney").val('');
+							}
+						},
+						error:function(){
+							alert("出错啦");
+						}
+					});
+				}
+			}
+
+			setInterval(function() {
+				var now = (new Date()).toLocaleString();
+				$('#time').text('当前时间：' + now);
+			}, 1000);
+			$(function(){
+				$.ajax({
+					contentType:'application/json',
+					xhrFields:{
+						withCredentials: true
+					},
+					type:"post",
+					url:"http://192.168.1.168:8080/getAmount",
+					async:true,
+					dataType:'json',
+					success:function(data){
+						console.log(data);
+						var html = "<span>余额："+data[0].balance+"</span>"
+						$('.yue').html(html);
+					}
+				});
+			})
+
+		</script>
+	</head>
+
+	<body>
+		<div id="path">
+			<ol class="breadcrumb">
+				<li><span>当前页面：</span><a href="">用户操作</a></li>
+				<li><a href="">取款</a></li>
+			</ol>
+		</div>
+		<div id="body">
+			<div id="time">
+
+			</div>
+			<div class="yue"></div>
+			<form id="formdepost" method="post" action="" class="form-inline">
+				<div class="input-group">
+					<div class="input-group-addon">￥</div>
+					<input type="number" class="form-control" id="drawmoney" placeholder="请输入取款金额" autofocus>
+				</div>
+				<div id="btn-group">
+					<input type="button" onclick="sub()" class="btn btn-success" value="确定"></button>
+					<input type="reset" class="btn btn-danger" value="取消"></button>
+				</div>
+			</form>
+		</div>
+	</body>
+
+=======
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/ddt.css" />
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/hui.css" />
+		<script type="text/javascript" src="../js/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="../js/H-ui.js"></script>
+		<style>
+			#body{
+				position: relative;
+			}
+			.yue{
+				position: absolute;
+				width: 200px;
+				height: 30px;
+				background: #C7C7C7;
+				border: 1px solid #C7C7C7;
+				border-radius: 10px;
+				left: 50%;
+				margin-left: -100px;
+				top: 40px;
+				text-align: center;
+			}
+			.yue span{
+				display: inline-block;
+				line-height: 30px;
+			}
+
+		</style>
+		<script>
+			function sub(ev){
+				ev = event||window.event;
+				//获取输入的钱数值
+				var money = $('#drawmoney').val();
+				//判断是否为空
+				if(money==0||money==null){
+					parent.showModal('提示', '金额不能为空！');
+					ev.preventDefault();//阻止提交
+					return;
+				}else{
+					//获取用户数据库的余额
+					$.ajax({
+						contentType:'application/json',
+						xhrFields:{
+							withCredentials: true
+						},
+						type:"post",
+						url:"http://192.168.1.168:8080/account/drawmoney",
+						data: JSON.stringify({"balance": money}),
+						dataType: 'text',
+						async:true,
+							if(data!=null&&data=='success'){
+								$.Huimodalalert('取款成功', 2000);
+								$("#drawmoney").val('');
+							}
+						},
+						error:function(){
+							alert("出错啦");
+						}
+					});
+				}
+			}
+
+			setInterval(function() {
+				var now = (new Date()).toLocaleString();
+				$('#time').text('当前时间：' + now);
+			}, 1000);
+			$(function(){
+				$.ajax({
+					contentType:'application/json',
+					xhrFields:{
+						withCredentials: true
+					},
+					type:"post",
+					url:"http://192.168.1.168:8080/getAmount",
+					async:true,
+					dataType:'json',
+					success:function(data){
+						console.log(data);
+						var html = "<span>余额："+data[0].balance+"</span>"
+						$('.yue').html(html);
+					}
+				});
+			})
+
+		</script>
+	</head>
+
+	<body>
+		<div id="path">
+			<ol class="breadcrumb">
+				<li><span>当前页面：</span><a href="">用户操作</a></li>
+				<li><a href="">取款</a></li>
+			</ol>
+		</div>
+		<div id="body">
+			<div id="time">
+
+			</div>
+			<div class="yue"></div>
+			<form id="formdepost" method="post" action="" class="form-inline">
+				<div class="input-group">
+					<div class="input-group-addon">￥</div>
+					<input type="number" class="form-control" id="drawmoney" placeholder="请输入取款金额" autofocus>
+				</div>
+				<div id="btn-group">
+					<input type="button" onclick="sub()" class="btn btn-success" value="确定"></button>
+					<input type="reset" class="btn btn-danger" value="取消"></button>
+				</div>
+			</form>
+		</div>
+	</body>
+
+>>>>>>> second commit
+</html>

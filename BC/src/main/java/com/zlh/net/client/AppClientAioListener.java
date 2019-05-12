@@ -1,0 +1,58 @@
+package com.zlh.net.client;
+
+import com.zlh.net.conf.TioProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.tio.client.intf.ClientAioListener;
+import org.tio.core.Aio;
+import org.tio.core.ChannelContext;
+import org.tio.core.intf.Packet;
+
+import java.nio.ByteBuffer;
+
+/**
+ * @Author: ZhouLinHu
+ * @Description: client端对各个server连接的情况回调
+ * @Date: Created in 18:27 2019/5/7
+ */
+@Component
+public class AppClientAioListener implements ClientAioListener {
+
+    private Logger logger = LoggerFactory.getLogger(getClass());
+
+    @Autowired
+    TioProperties tioProperties;
+
+    @Override
+    public void onAfterClose(ChannelContext channelContext, Throwable throwable, String s, boolean b) throws Exception {
+        logger.info("连接关闭：server地址为-" + channelContext.getServerNode());
+        Aio.unbindGroup(channelContext);
+    }
+
+    @Override
+    public void onAfterConnected(ChannelContext channelContext, boolean isConnected, boolean isReconnect) throws Exception {
+        if (isConnected || isReconnect) {
+            logger.info("连接成功：server地址为-" + channelContext.getServerNode());
+            Aio.bindGroup(channelContext, tioProperties.getClientGroupName());
+        } else {
+            logger.info("连接失败：server地址为-" + channelContext.getServerNode());
+        }
+    }
+
+    @Override
+    public void onAfterReceived(ChannelContext channelContext, Packet packet, int i) throws Exception {
+
+    }
+
+    @Override
+    public void onAfterSent(ChannelContext channelContext, Packet packet, boolean b) throws Exception {
+
+    }
+
+    @Override
+    public void onBeforeClose(ChannelContext channelContext, Throwable throwable, String s, boolean b) {
+
+    }
+}

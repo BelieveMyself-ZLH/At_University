@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>请假</title>
+		<link rel="stylesheet" href="css/style3.css" />
+	</head>
+	<body>
+		<h1>请假时间</h1>
+		<div class="box">
+			<table class="input_title">
+				<form id="form1" action="#" method="post">
+						<!--第二行 td：列-->
+						<tr>
+							<td class="title">
+								开始时间：
+							</td>
+							<td>
+								 <div class="input_box">
+								 	<!--input 输入框 type=“number”指定输入框只能输入数字类型-->
+								 	<input type="number" class="input user_id" id="user_id" />
+								 </div>
+							</td>
+						</tr>
+						<!--第三行-->
+						<tr>
+							<td class="title">
+								返回时间：
+							</td>
+							<td>
+								 <div class="input_box">
+								 	<input type="number" class="input password" id="password" />
+								 </div>
+							</td>
+						</tr>
+						<!--第四行-->
+						<tr>
+							<!--colspan 相当于合并单元格，占领2个单位空间-->
+							<td colspan="2">
+								<button type="button" class="submit" onclick="calc()">请假</button>
+							</td>
+						</tr>
+					</form>
+			</table>
+		</div>
+	</body>
+</html>

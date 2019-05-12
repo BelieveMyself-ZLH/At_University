@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/ddt.css" />
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/hui.css"/>
+		<script type="text/javascript" src="../js/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../js/H-ui.js"></script>
+		<script>
+			function sub(ev) {
+				ev = event || window.event;
+				var money = $('#deposit').val();
+				//					alert(money);
+				if (money == 0 || money == null) {
+					parent.showModal('提示', '金额不能为空！');
+					ev.preventDefault();
+				} else {
+					$.ajax({
+						contentType:'application/json',
+						xhrFields:{
+							withCredentials: true
+<<<<<<< HEAD
+						},
+						type: "post",
+						url: "http://192.168.1.168:8080/account/depoist",
+						data: JSON.stringify({"balance": money}),
+						dataType: 'text',
+						async: true,
+=======
+						},
+						type: "post",
+						url: "http://192.168.1.168:8080/account/depoist",
+						data: JSON.stringify({"balance": money}),
+						dataType: 'text',
+						async: true,
+>>>>>>> second commit
+						success: function(data) {
+							if(data!=null&&data=='success'){
+								$.Huimodalalert('存款成功', 2000);
+//								alert("success");
+								$("#deposit").val('');
+<<<<<<< HEAD
+							}
+						},
+						error: function() {
+							alert('出错');
+						}
+					});
+//					var form=$("#formdepost").get(0);
+//					form.action="http://10.10.254.88/account/depoist:jsessionid="+getSessionId();
+=======
+							}
+						},
+						error: function() {
+							alert('出错');
+						}
+					});
+//					var form=$("#formdepost").get(0);
+//					form.action="http://10.10.254.88/account/depoist:jsessionid="+getSessionId();
+>>>>>>> second commit
+//					form.submit();
+				}
+
+				function  getSessionId() {            
+					var  c_name  =  'JSESSIONID';              
+					if (document.cookie.length > 0) {                 
+						c_start = document.cookie.indexOf(c_name  +  "=");                
+						if (c_start != -1) {                  
+							c_start = c_start  +  c_name.length + 1;                 
+							c_end = document.cookie.indexOf(";", c_start);                   
+							if (c_end == -1)  c_end = document.cookie.length;                   
+							return  unescape(document.cookie.substring(c_start, c_end));                 
+						}            
+					}        
+				}
+			}
+			$(function() {
+				setInterval(function() {
+					var now = (new Date()).toLocaleString();
+					$('#time').text('当前时间：' + now);
+				}, 1000);
+			})
+		</script>
+	</head>
+
+	<body>
+		<div id="path">
+			<ol class="breadcrumb">
+				<li><span>当前页面：</span><a href="">用户操作</a></li>
+				<li><a href="">存款</a></li>
+			</ol>
+		</div>
+		<div id="body">
+			<div id="time">
+			</div>
+			<form id="formdepost" method="post" action="#" class="form-inline">
+				<div class="input-group">
+					<div class="input-group-addon">￥</div>
+					<input type="number" class="form-control" id="deposit" name="deposit" placeholder="请输入存款金额" autofocus>
+				</div>
+				<div id="btn-group">
+					<input type="button" class="btn btn-success" onclick="sub()" value="确定"></button>
+					<input type="reset" class="btn btn-danger" value="取消"></button>
+				</div>
+			</form>
+		</div>
+	</body>
+
+</html>

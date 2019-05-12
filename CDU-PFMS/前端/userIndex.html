@@ -1,0 +1,303 @@
+<<<<<<< HEAD
+<!DOCTYPE html xmlns:th="http://www.thymeleaf.org">
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="shortcut icon" href="cdu_favicon.jpg" />
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js" ></script>
+		<script>
+			function showModal(title, message, type, callback){
+				//设置标题
+				$('.modal-title').text(title);
+				//设置消息
+				$('.modal-body p').text(message);
+				//根据类型选择按钮组
+				if(type==1){
+					$('.modal-footer div').eq(0).hide();
+					$('.modal-footer div').eq(1).show();
+					//获得确定按钮
+					var btn = $('#btn-sure');
+					//取消之前绑定的事件
+					$(btn).unbind('click');
+					$(btn).bind('click', function(){
+						//执行函数
+						callback.call();
+						//隐藏模态框
+						$('#myModal').modal('hide');
+					})
+					
+				}else{
+					$('.modal-footer div').eq(1).hide();
+					$('.modal-footer div').eq(0).show();
+				}
+				$('#myModal').modal('show');
+			}
+			$(function(){
+				$('.active').eq(0).click(function(){
+					showMenu(1);
+				});
+				$('.active').eq(1).click(function(){
+					showMenu(2);
+				});
+				$('#left-nav ul li[parentId=1]').show();
+				$('#left-nav ul li[parentId=2]').hide();
+				function showMenu(id){
+					$('#left-nav ul li[parentId='+id+']').slideToggle(200);
+				}
+				$('#left-nav ul li[parentId=1]').eq(0).css({'background':'#EEE'});
+				//选中状态
+				$('#left-nav ul li').not($('.active')).click(function(){
+					$(this).css({'background':'#EEEEEE'});
+					$('#left-nav ul li').not($('.active')).not($(this)).css({'background':''})
+				});
+				
+//				var url=location.search;
+//				if(url.indexOf("?")!=-1){
+//					var str=url.substr(1);
+//					strs=str.split("=");
+//					$('.userName').text(strs[1]);
+//				}
+				$.ajax({
+					contentType: 'application/json',
+					xhrFields: {
+						withCredentials: true
+					},
+					type: "post",
+					url: "http://192.168.1.168:8080/login/getAccount",
+					dataType: 'text',
+					success:function(data){
+						if(data!=null&&data!='error'){
+							$('.userName').text(data);
+						}
+						
+					}
+				});
+			})
+			//退出销毁session
+			function logout(){
+				$.ajax({
+					contentType: 'application/json',
+					xhrFields: {
+						withCredentials: true
+					},
+					type: "post",
+					url: "http://192.168.1.168:8080/logout",
+					dataType: 'text',
+					success:function(data){
+						if(data!=null&&data=='success'){
+							window.location.href="firstPage.html";
+						}
+						
+					}
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<div id="header">
+			<div class="logo">
+				<a href=""><img src="img/newlogo.png" title="首页"/></a>
+			</div>
+			<div class="title">
+				<a href=""><span>橙子资金系统</span></a>
+			</div>
+			<span class="glyphicon glyphicon-user userIcon"></span>
+			<span class="userName" ></span>
+			<span class="glyphicon glyphicon-log-out logout" title="退出" onclick="logout()"></span>
+		</div>
+		<div id="left-nav">
+			<ul class="nav nav-stacked nav-pills"> 
+				<li id="1" class="active"><a href="javascript:;">用户查看信息</a></li>
+				<li parentId="1"><a href="user/userCheckDealInfo.html" target="mainFrame">交易记录</a></li>
+				<li parentId="1"><a href="user/userScanNews.html" target="mainFrame">新闻公告</a></li>
+				<li id="2" class="active"><a href="javascript:;">用户操作</a></li>
+				<li parentId="2"><a href="user/userDeposit.html" target="mainFrame">存款</a></li>
+				<li parentId="2"><a href="user/userDrawMoney.html" target="mainFrame">取款</a></li>
+				<li parentId="2"><a href="user/userTransferMoney.html" target="mainFrame">转账</a></li>
+				<li parentId="2"><a href="user/userChangeInfo.html" target="mainFrame">修改信息</a></li>
+				<li parentId="2"><a href="user/userChangePwd.html" target="mainFrame">修改密码</a></li>
+			</ul>
+		</div>
+		<div id="myFrame">
+			<iframe name="mainFrame" id="mainFrame" src="user/userCheckDealInfo.html" width="100%" height="100%" frameborder="0"></iframe>
+		</div>
+		<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title"></h4>
+					</div>
+					<div class="modal-body">
+						<p></p>
+					</div>
+					<div class="modal-footer">
+						<div>
+							<button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+						</div>
+						<div>
+							<button type="button" class="btn btn-primary" id="btn-sure">确定</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						</div>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+	</body>
+</html>
+=======
+<!DOCTYPE html xmlns:th="http://www.thymeleaf.org">
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="shortcut icon" href="cdu_favicon.jpg" />
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js" ></script>
+		<script>
+			function showModal(title, message, type, callback){
+				//设置标题
+				$('.modal-title').text(title);
+				//设置消息
+				$('.modal-body p').text(message);
+				//根据类型选择按钮组
+				if(type==1){
+					$('.modal-footer div').eq(0).hide();
+					$('.modal-footer div').eq(1).show();
+					//获得确定按钮
+					var btn = $('#btn-sure');
+					//取消之前绑定的事件
+					$(btn).unbind('click');
+					$(btn).bind('click', function(){
+						//执行函数
+						callback.call();
+						//隐藏模态框
+						$('#myModal').modal('hide');
+					})
+					
+				}else{
+					$('.modal-footer div').eq(1).hide();
+					$('.modal-footer div').eq(0).show();
+				}
+				$('#myModal').modal('show');
+			}
+			$(function(){
+				$('.active').eq(0).click(function(){
+					showMenu(1);
+				});
+				$('.active').eq(1).click(function(){
+					showMenu(2);
+				});
+				$('#left-nav ul li[parentId=1]').show();
+				$('#left-nav ul li[parentId=2]').hide();
+				function showMenu(id){
+					$('#left-nav ul li[parentId='+id+']').slideToggle(200);
+				}
+				$('#left-nav ul li[parentId=1]').eq(0).css({'background':'#EEE'});
+				//选中状态
+				$('#left-nav ul li').not($('.active')).click(function(){
+					$(this).css({'background':'#EEEEEE'});
+					$('#left-nav ul li').not($('.active')).not($(this)).css({'background':''})
+				});
+				
+//				var url=location.search;
+//				if(url.indexOf("?")!=-1){
+//					var str=url.substr(1);
+//					strs=str.split("=");
+//					$('.userName').text(strs[1]);
+//				}
+				$.ajax({
+					contentType: 'application/json',
+					xhrFields: {
+						withCredentials: true
+					},
+					type: "post",
+					url: "http://192.168.1.168:8080/login/getAccount",
+					dataType: 'text',
+					success:function(data){
+						if(data!=null&&data!='error'){
+							$('.userName').text(data);
+						}
+						
+					}
+				});
+			})
+			//退出销毁session
+			function logout(){
+				$.ajax({
+					contentType: 'application/json',
+					xhrFields: {
+						withCredentials: true
+					},
+					type: "post",
+					url: "http://192.168.1.168:8080/logout",
+					dataType: 'text',
+					success:function(data){
+						if(data!=null&&data=='success'){
+							window.location.href="firstPage.html";
+						}
+						
+					}
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<div id="header">
+			<div class="logo">
+				<a href=""><img src="img/newlogo.png" title="首页"/></a>
+			</div>
+			<div class="title">
+				<a href=""><span>橙子资金系统</span></a>
+			</div>
+			<span class="glyphicon glyphicon-user userIcon"></span>
+			<span class="userName" ></span>
+			<span class="glyphicon glyphicon-log-out logout" title="退出" onclick="logout()"></span>
+		</div>
+		<div id="left-nav">
+			<ul class="nav nav-stacked nav-pills"> 
+				<li id="1" class="active"><a href="javascript:;">用户查看信息</a></li>
+				<li parentId="1"><a href="user/userCheckDealInfo.html" target="mainFrame">交易记录</a></li>
+				<li parentId="1"><a href="user/userScanNews.html" target="mainFrame">新闻公告</a></li>
+				<li id="2" class="active"><a href="javascript:;">用户操作</a></li>
+				<li parentId="2"><a href="user/userDeposit.html" target="mainFrame">存款</a></li>
+				<li parentId="2"><a href="user/userDrawMoney.html" target="mainFrame">取款</a></li>
+				<li parentId="2"><a href="user/userTransferMoney.html" target="mainFrame">转账</a></li>
+				<li parentId="2"><a href="user/userChangeInfo.html" target="mainFrame">修改信息</a></li>
+				<li parentId="2"><a href="user/userChangePwd.html" target="mainFrame">修改密码</a></li>
+			</ul>
+		</div>
+		<div id="myFrame">
+			<iframe name="mainFrame" id="mainFrame" src="user/userCheckDealInfo.html" width="100%" height="100%" frameborder="0"></iframe>
+		</div>
+		<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title"></h4>
+					</div>
+					<div class="modal-body">
+						<p></p>
+					</div>
+					<div class="modal-footer">
+						<div>
+							<button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+						</div>
+						<div>
+							<button type="button" class="btn btn-primary" id="btn-sure">确定</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						</div>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+	</body>
+</html>
+>>>>>>> second commit

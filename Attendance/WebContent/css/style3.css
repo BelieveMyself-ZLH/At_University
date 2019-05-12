@@ -1,0 +1,67 @@
+@charset "utf-8";
+
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	background: url(../img/background.jpg) no-repeat center;
+	background-size: cover;
+	background-attachment: fixed;
+	
+	font-family: "Open Sans",sans-serif;
+	text-align: center;
+}
+.clockinbox{
+	background: url(../img/city.jpg);
+	background-size: cover;
+	min-height: 500px;
+	position: absolute;
+	width: 80%;
+	text-align: center;
+	margin-left: 10%;
+    margin-top: 10%;
+}
+.clockinbox_left{
+	background: url(../img/Clock_in.jpg) no-repeat center;
+	background-size: cover;
+	min-height: 500px;
+	position: relative;
+	width: 50%;
+	float: left;
+}
+.clockinbox_right{
+	text-align: center;
+	width: 50%;
+	margin-top: 18%;
+	float: right;
+}
+.submit{
+	width: 40%;
+	height: 10%;
+	font-size: 30px;
+}
+.box{
+	background: url(../img/city.jpg) no-repeat center;
+	background-size: cover;
+	min-height: 500px;
+	position: absolute;
+	width: 80%;
+	text-align: center;
+	margin-left: 10%;
+
+}
+.input_title{
+	color: white;
+	font-size: 25px;
+	text-align: center;
+	margin-top: 150px;
+	margin-left: 40%;
+}
+.input{
+	/*默认线条去掉*/
+	border: none;
+	width: 80%;
+	height: 100%;
+	background: #F5F5F5;
+}
